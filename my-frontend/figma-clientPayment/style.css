@@ -1,0 +1,133 @@
+.client-payment {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.client-payment .overlap-group-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+}
+
+.client-payment .overlap-group {
+  position: relative;
+  width: 1441px;
+  height: 1024px;
+  background: linear-gradient(
+    180deg,
+    rgb(202.46, 235.88, 235.88) 0%,
+    rgb(81.17, 100.94, 100.94) 100%
+  );
+}
+
+.client-payment .overlap {
+  position: absolute;
+  width: 1440px;
+  height: 113px;
+  top: 0;
+  left: 0;
+  background-color: #a0cdcf;
+}
+
+.client-payment .file {
+  position: absolute;
+  width: 103px;
+  height: 100px;
+  top: 7px;
+  left: 377px;
+  object-fit: cover;
+}
+
+.client-payment .hedgehog-inc {
+  position: absolute;
+  width: 548px;
+  height: 76px;
+  top: 17px;
+  left: 445px;
+  text-shadow: 7px 10px 8.8px #00000040;
+  -webkit-text-stroke: 1px #000000;
+  font-family: "Khmer-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 8.64px;
+  line-height: 57.6px;
+}
+
+.client-payment .text-wrapper {
+  position: absolute;
+  width: 504px;
+  top: 189px;
+  left: 455px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.client-payment .frame {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px;
+  position: absolute;
+  top: 602px;
+  left: 446px;
+}
+
+.client-payment .text-fields {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.client-payment .div {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.client-payment .text-field {
+  position: relative;
+  width: 402px;
+  height: 53px;
+  background-color: var(--form-background);
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: var(--default-stroke);
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+/* Continuation with all additional elements */
+
+.client-payment .text-wrapper-13 {
+  position: absolute;
+  width: 176px;
+  top: 114px;
+  left: 146px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 32px;
+  letter-spacing: 0;
+  line-height: normal;
+}
