@@ -1,0 +1,298 @@
+.staff-salary {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.staff-salary .overlap-group-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+}
+
+.staff-salary .overlap-group {
+  position: relative;
+  width: 1441px;
+  height: 1024px;
+  left: -1px;
+}
+
+.staff-salary .rectangle {
+  position: absolute;
+  width: 214px;
+  height: 113px;
+  top: 684px;
+  left: 1px;
+}
+
+.staff-salary .background {
+  position: absolute;
+  width: 1440px;
+  height: 1020px;
+  top: 4px;
+  left: 1px;
+}
+
+.staff-salary .div {
+  position: absolute;
+  width: 1440px;
+  height: 113px;
+  top: 0;
+  left: 0;
+  background-color: #b0bcee;
+}
+
+.staff-salary .file {
+  position: absolute;
+  width: 103px;
+  height: 100px;
+  top: 7px;
+  left: 378px;
+  object-fit: cover;
+}
+
+.staff-salary .hedgehog-inc {
+  position: absolute;
+  width: 548px;
+  height: 76px;
+  top: 17px;
+  left: 446px;
+  text-shadow: 7px 10px 8.8px #00000040;
+  -webkit-text-stroke: 1px #000000;
+  font-family: "Khmer-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 8.64px;
+  line-height: 57.6px;
+}
+
+.staff-salary .rectangle-2 {
+  position: absolute;
+  width: 378px;
+  height: 911px;
+  top: 113px;
+  left: 0;
+  background-color: #d9d9d9;
+}
+
+.staff-salary .rectangle-3 {
+  position: absolute;
+  width: 352px;
+  height: 62px;
+  top: 618px;
+  left: 26px;
+  background-color: #bdcafe;
+  border-radius: 50px 0px 0px 50px;
+}
+
+.staff-salary .admin-dash {
+  position: absolute;
+  width: 378px;
+  height: 757px;
+  top: 190px;
+  left: 0;
+}
+
+.staff-salary .text-wrapper {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 87px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .group {
+  position: absolute;
+  width: 111px;
+  height: 38px;
+  top: 0;
+  left: 134px;
+}
+
+.staff-salary .text-wrapper-2 {
+  position: absolute;
+  width: 109px;
+  height: 38px;
+  top: 0;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .text-wrapper-3 {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 175px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .text-wrapper-4 {
+  position: absolute;
+  width: 336px;
+  height: 38px;
+  top: 351px;
+  left: 27px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .text-wrapper-5 {
+  position: absolute;
+  width: 336px;
+  height: 38px;
+  top: 439px;
+  left: 21px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .text-wrapper-6 {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 263px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .text-wrapper-7 {
+  position: absolute;
+  width: 377px;
+  height: 29px;
+  top: 727px;
+  left: 1px;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .rectangle-4 {
+  position: absolute;
+  width: 397px;
+  height: 503px;
+  top: 165px;
+  left: 447px;
+  background-color: #b0bdee;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.staff-salary .hours-salary-wrapper {
+  position: absolute;
+  width: 350px;
+  height: 390px;
+  top: 228px;
+  left: 471px;
+}
+
+.staff-salary .hours-salary {
+  position: absolute;
+  width: 348px;
+  top: 0;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .div-wrapper {
+  position: absolute;
+  width: 399px;
+  height: 60px;
+  top: 171px;
+  left: 447px;
+}
+
+.staff-salary .text-wrapper-8 {
+  position: absolute;
+  width: 397px;
+  height: 60px;
+  top: 0;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.staff-salary .rectangle-5 {
+  position: absolute;
+  width: 397px;
+  height: 503px;
+  top: 165px;
+  left: 942px;
+  background-color: #b0bdee;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.staff-salary .group-2 {
+  position: absolute;
+  width: 350px;
+  height: 322px;
+  top: 228px;
+  left: 967px;
+}
+
+.staff-salary .group-3 {
+  position: absolute;
+  width: 399px;
+  height: 60px;
+  top: 171px;
+  left: 942px;
+}
