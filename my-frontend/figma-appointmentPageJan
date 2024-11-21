@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="appointment-page">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="background"></div>
+          <div class="accordion-item">
+            <div class="accordion-title">
+              <div class="title">Not chosen</div>
+              <img class="chevron-down" src="img/chevron-down.svg" />
+            </div>
+          </div>
+          <div class="rectangle"></div>
+          <div class="selection"></div>
+          <div class="div"></div>
+          <div class="selection-2"></div>
+          <div class="rectangle-2"></div>
+          <div class="hedgehog-inc">HEDGEHOG INC.</div>
+          <div class="text-wrapper">Choose a doctor</div>
+          <div class="text-wrapper-2">Reason for the appointment</div>
+          <div class="selection-3"></div>
+          <div class="text-wrapper-3">Missing Tooth</div>
+          <p class="p">Cracked, Loose or Falling Teeth</p>
+          <div class="text-wrapper-4">Periodontal Disease</div>
+          <div class="text-wrapper-5">None of the above</div>
+          <div class="text-wrapper-6">Select Date</div>
+          <div class="text-wrapper-7">Select Time</div>
+          <div class="accordion-title-wrapper">
+            <div class="accordion-title">
+              <div class="title">Not chosen</div>
+              <img class="chevron-down" src="img/chevron-down.svg" />
+            </div>
+          </div>
+          <div class="calendar">
+            <div class="overlap-group">
+              <div class="calendar-2"></div>
+              <div class="rectangle-3"></div>
+              <div class="text-wrapper-8">2024</div>
+              <div class="rectangle-4"></div>
+              <div class="rectangle-5"></div>
+              <div class="rectangle-6"></div>
+              <div class="rectangle-7"></div>
+              <div class="rectangle-8"></div>
+              <div class="rectangle-9"></div>
+              <div class="rectangle-10"></div>
+              <img class="union" src="img/union.svg" />
+              <div class="next-month-dates">
+                <div class="text-wrapper-9">1</div>
+                <div class="text-wrapper-10">2</div>
+                <div class="text-wrapper-11">3</div>
+                <div class="text-wrapper-12">4</div>
+              </div>
+              <div class="current-month-dates">
+                <!-- Days of the current month -->
+                <div class="text-wrapper-13">1</div>
+                <div class="text-wrapper-14">8</div>
+                <div class="text-wrapper-15">15</div>
+                <div class="text-wrapper-16">22</div>
+                <div class="text-wrapper-17">29</div>
+                <!-- Add remaining days here -->
+              </div>
+              <div class="days">
+                <div class="text-wrapper-44">Mo</div>
+                <div class="text-wrapper-45">Th</div>
+                <div class="text-wrapper-46">Tu</div>
+                <div class="text-wrapper-47">Fr</div>
+                <div class="text-wrapper-48">We</div>
+                <div class="text-wrapper-49">Sa</div>
+                <div class="text-wrapper-50">Su</div>
+              </div>
+              <div class="overlap-group-wrapper">
+                <div class="div-wrapper">
+                  <div class="text-wrapper-51">Jan</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="choose">
+            <!-- Selection buttons -->
+            <div class="ellipse"></div>
+            <div class="ellipse-2"></div>
+            <!-- Add remaining ellipses here -->
+          </div>
+          <img class="nav-bar" src="img/nav-bar.svg" />
+          <div class="rectangle-11"></div>
+          <div class="client-homepage">
+            <div class="text-wrapper-52">Profile</div>
+            <div class="group">
+              <div class="text-wrapper-53">Overview</div>
+            </div>
+            <div class="text-wrapper-54">Appointments</div>
+            <div class="text-wrapper-55">Medical History</div>
+            <div class="text-wrapper-56">Contact Clinic</div>
+            <div class="text-wrapper-57">Payment</div>
+            <div class="text-wrapper-58">Dental Plan</div>
+            <div class="text-wrapper-59">Log Out</div>
+          </div>
+          <div class="submit">
+            <div class="text-wrapper-60">Submit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
