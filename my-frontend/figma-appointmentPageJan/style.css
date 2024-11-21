@@ -1,0 +1,109 @@
+.appointment-page {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.appointment-page .overlap-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1917px;
+}
+
+.appointment-page .overlap {
+  position: relative;
+  width: 1442px;
+  height: 1917px;
+  left: -1px;
+}
+
+.appointment-page .background {
+  position: absolute;
+  width: 1441px;
+  height: 1917px;
+  top: 0;
+  left: 1px;
+  background-color: #e4e4e4;
+}
+
+.appointment-page .accordion-item {
+  width: 640px;
+  padding: var(--size-padding-lg);
+  position: absolute;
+  top: 1208px;
+  left: 389px;
+  background-color: var(--color-background-default-secondary);
+  border-radius: var(--size-radius-200);
+  border: 1px solid var(--color-border-default-default);
+  display: flex;
+  align-items: center;
+}
+
+.appointment-page .accordion-title {
+  gap: var(--size-space-200);
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.appointment-page .title {
+  flex: 1;
+  position: relative;
+  font-family: var(--body-strong-font-family);
+  font-weight: var(--body-strong-font-weight);
+  color: var(--color-text-default-secondary);
+  font-size: var(--body-strong-font-size);
+  letter-spacing: var(--body-strong-letter-spacing);
+  line-height: var(--body-strong-line-height);
+  font-style: var(--body-strong-font-style);
+}
+
+.appointment-page .chevron-down {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.appointment-page .rectangle {
+  position: absolute;
+  width: 469px;
+  height: 284px;
+  top: 318px;
+  left: 403px;
+  background-color: #d9d9d9;
+  border-radius: 30px;
+}
+
+/* Add similar sections for other elements below */
+
+.appointment-page .submit {
+  position: absolute;
+  width: 229px;
+  height: 79px;
+  top: 1384px;
+  left: 794px;
+  background-color: #d9d9d9;
+  border-radius: 40px;
+  border: 8px solid #b6a5a5;
+}
+
+.appointment-page .text-wrapper-60 {
+  position: absolute;
+  width: 174px;
+  height: 50px;
+  top: 5px;
+  left: 19px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #575757;
+  font-size: 36px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+/* Additional elements and styles can be structured similarly */
