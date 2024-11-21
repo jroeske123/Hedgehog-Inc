@@ -1,0 +1,147 @@
+
+.client-messaging {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.client-messaging .overlap-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+}
+
+.client-messaging .overlap {
+  position: relative;
+  width: 1442px;
+  height: 1024px;
+  left: -1px;
+}
+
+.client-messaging .background {
+  position: absolute;
+  width: 1441px;
+  height: 1024px;
+  top: 0;
+  left: 1px;
+  background: linear-gradient(
+    180deg,
+    rgb(202.46, 235.88, 235.88) 0%,
+    rgb(81.17, 100.94, 100.94) 100%
+  );
+}
+
+.client-messaging .frame {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px 12px 12px;
+  position: absolute;
+  top: 132px;
+  left: 1292px;
+  background-color: #ffffff;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0px 1px 2px #00000026, 0px 1px 3px 1px #00000026;
+}
+
+.client-messaging .img {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.client-messaging .text-wrapper {
+  position: relative;
+  width: fit-content;
+  font-family: "Lato-Medium", Helvetica;
+  font-weight: 500;
+  color: #3d4043;
+  font-size: 13px;
+  letter-spacing: -0.13px;
+  line-height: normal;
+}
+
+.client-messaging .nav-bar {
+  position: absolute;
+  width: 377px;
+  height: 911px;
+  top: 113px;
+  left: 1px;
+}
+
+.client-messaging .rectangle {
+  position: absolute;
+  width: 352px;
+  height: 62px;
+  top: 608px;
+  left: 26px;
+  background-color: #a3d2d4;
+  border-radius: 50px 0px 0px 50px;
+}
+
+.client-messaging .client-homepage {
+  position: absolute;
+  width: 378px;
+  height: 757px;
+  top: 180px;
+  left: 0;
+}
+
+.client-messaging .div {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 87px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.client-messaging .group {
+  position: absolute;
+  width: 111px;
+  height: 38px;
+  top: 0;
+  left: 134px;
+}
+
+.client-messaging .text-wrapper-2 {
+  position: absolute;
+  width: 109px;
+  height: 38px;
+  top: 0;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.client-messaging .text-wrapper-3 {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 175px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+/* Rest of the CSS continues similarly with other rules provided */
