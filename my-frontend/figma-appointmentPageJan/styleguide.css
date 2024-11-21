@@ -1,0 +1,33 @@
+:root {
+  --body-strong-font-family: "Inter", Helvetica;
+  --body-strong-font-weight: 600;
+  --body-strong-font-size: 16px;
+  --body-strong-letter-spacing: 0px;
+  --body-strong-line-height: 140%; /* Rounded for clarity */
+  --body-strong-font-style: normal;
+
+  --color-text-default-secondary: var(--color-primitives-gray-500);
+  --color-background-default-secondary: var(--color-primitives-gray-100);
+  --color-border-default-default: var(--color-primitives-gray-300);
+
+  --color-primitives-gray-500: rgba(117, 117, 117, 1);
+  --color-primitives-white-500: rgba(255, 255, 255, 0.7);
+  --color-primitives-gray-100: rgba(245, 245, 245, 1);
+  --color-primitives-gray-300: rgba(217, 217, 217, 1);
+  --color-primitives-gray-800: rgba(44, 44, 44, 1);
+
+  --size-space-200: 8px;
+  --size-padding-lg: 16px;
+  --size-radius-200: 8px;
+}
+
+/* Theme toggle instructions */
+[data-color-mode="SDS-light"] {
+  --color-text-default-secondary: var(--color-primitives-gray-500);
+  --color-background-default-secondary: var(--color-primitives-gray-100);
+}
+
+[data-color-mode="SDS-dark"] {
+  --color-text-default-secondary: var(--color-primitives-white-500);
+  --color-background-default-secondary: var(--color-primitives-gray-800);
+}
