@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="styleguide.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="homepage">
+      <div class="overlap-wrapper">
+        <div class="overlap">
+          <div class="overlap-group">
+            <p class="text-wrapper">Oral hygiene made easy for you</p>
+            <p class="div">Multiple specialists for each of your concerns</p>
+            <button class="button"><button class="button-2">BOOK NOW</button></button>
+            <div class="overlap-group">
+              <img class="medical" src="img/medical-5459653-1280-1.png" />
+              <div class="rectangle"></div>
+              <div class="homepage-buttons">
+                <div class="log-in">LOG IN</div>
+                <div class="sign-up">SIGN UP</div>
+                <div class="home">HOME</div>
+                <div class="group">
+                  <div class="overlap-group-2">
+                    <div class="hedgehog-inc">HEDGEHOG INC.</div>
+                    <img class="file" src="img/file-2.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="component-wrapper">
+            <div class="component">
+              <div class="ABOUT-us">ABOUT US</div>
+              <div class="text-wrapper-2">SERVICES</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
