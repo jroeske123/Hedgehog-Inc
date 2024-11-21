@@ -1,0 +1,157 @@
+.staff-manage {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.staff-manage .overlap-group-wrapper {
+  background-color: #ffffff;
+  overflow: hidden;
+  width: 1440px;
+  height: 1024px;
+}
+
+.staff-manage .overlap-group {
+  position: relative;
+  width: 1441px;
+  height: 1024px;
+  left: -1px;
+}
+
+.staff-manage .rectangle {
+  position: absolute;
+  width: 214px;
+  height: 113px;
+  top: 684px;
+  left: 1px;
+}
+
+.staff-manage .background {
+  position: absolute;
+  width: 1440px;
+  height: 1020px;
+  top: 4px;
+  left: 1px;
+}
+
+.staff-manage .div {
+  position: absolute;
+  width: 960px;
+  height: 835px;
+  top: 143px;
+  left: 447px;
+  background-color: #b0bdee;
+  border-radius: 5px;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px #00000040;
+}
+
+.staff-manage .rectangle-2 {
+  position: absolute;
+  width: 1440px;
+  height: 113px;
+  top: 0;
+  left: 0;
+  background-color: #b0bcee;
+}
+
+.staff-manage .file {
+  position: absolute;
+  width: 103px;
+  height: 100px;
+  top: 7px;
+  left: 378px;
+  object-fit: cover;
+}
+
+.staff-manage .hedgehog-inc {
+  position: absolute;
+  width: 548px;
+  height: 76px;
+  top: 17px;
+  left: 446px;
+  text-shadow: 7px 10px 8.8px #00000040;
+  -webkit-text-stroke: 1px #000000;
+  font-family: "Khmer-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 8.64px;
+  line-height: 57.6px;
+}
+
+.staff-manage .rectangle-3 {
+  position: absolute;
+  width: 378px;
+  height: 911px;
+  top: 113px;
+  left: 0;
+  background-color: #d9d9d9;
+}
+
+.staff-manage .rectangle-4 {
+  position: absolute;
+  width: 352px;
+  height: 62px;
+  top: 354px;
+  left: 26px;
+  background-color: #bdcafe;
+  border-radius: 50px 0px 0px 50px;
+}
+
+.staff-manage .admin-dash {
+  position: absolute;
+  width: 378px;
+  height: 757px;
+  top: 190px;
+  left: 0;
+}
+
+.staff-manage .text-wrapper {
+  position: absolute;
+  width: 378px;
+  height: 38px;
+  top: 87px;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+}
+
+.staff-manage .group {
+  position: absolute;
+  width: 111px;
+  height: 38px;
+  top: 0;
+  left: 134px;
+}
+
+.staff-manage .text-wrapper-2 {
+  position: absolute;
+  width: 109px;
+  height: 38px;
+  top: 0;
+  left: 0;
+  font-family: "Lohit Tamil-Regular", Helvetica;
+  font-weight: 400;
+  color: #575757;
+  font-size: 24px;
+  text-align: center;
+}
+
+.staff-manage .group-2 {
+  position: absolute;
+  width: 148px;
+  height: 47px;
+  top: 143px;
+  left: 447px;
+  background-color: #d9d9d9;
+  border: 1px solid #000000;
+}
+
+/* More CSS rules follow similarly */
