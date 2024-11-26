@@ -1,0 +1,107 @@
+#app{
+    width: 90%;
+    height: 80%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3vh;
+}
+
+/* General Container Styling */
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #c6e6e8; /* Light teal to match the color scheme */
+    border: 1px solid #89b5b7; /* Slightly darker teal */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Form Labels */
+.form-container form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #00474f; /* Dark teal */
+}
+
+/* Text Inputs */
+.form-container form input,
+.form-container form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #89b5b7; /* Border color matching the theme */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f0fafa; /* Light background */
+    box-sizing: border-box;
+    color: #00474f; /* Text color */
+}
+
+/* Textarea Styling */
+.form-container form textarea {
+    resize: vertical;
+}
+
+/* Button Styling */
+.form-container form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007b84; /* Medium teal for the button */
+    color: #ffffff; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+.form-container form button:hover {
+    background-color: #005f63; /* Darker teal on hover */
+}
+
+/* Focus Styling */
+.form-container form input:focus,
+.form-container form textarea:focus {
+    border-color: #007b84;
+    outline: none;
+    box-shadow: 0 0 5px #007b8480;
+}
+
+/* Add Space Between Form Fields */
+.form-container form input + label,
+.form-container form textarea + label {
+    margin-top: 10px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+#message-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px;
+}
+
+#delete-btn {
+    background-color: rgb(181, 20, 20);
+}
+
+.breaker {
+    border-top: 2px dashed #00474f;
+    margin: 20px 0;
+}
+
+#delete-btn:hover {
+    background-color: #831212; /* Darker teal on hover */
+}
