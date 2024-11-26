@@ -1,0 +1,95 @@
+.center {
+    position: relative;
+    display: inline-block;
+}
+
+.rect {
+    position: absolute; /* Position the rectangle relative to the container */
+    top: 50%; /* Adjust the top position */
+    width: 200px; /* Width of the rectangle */
+    height: 100px; /* Height of the rectangle */
+    background-color: rgba(0, 0, 255, 0.5); /* A semi-transparent blue rectangle */
+}
+
+.img {
+    z-index: 1;
+    position: fixed;
+    bottom: 0;
+    height: 90%;
+    width: 44%;
+    z-index: 1;
+}
+
+.form-container {
+    margin-left: 250%;
+    margin-top: 45%;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
+
+.form-container h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-container .button-container {
+    display: flex; /* Flexbox to arrange buttons horizontally */
+    justify-content: space-between; /* Distribute buttons evenly */
+    gap: 10px; /* Optional: adds space between buttons */
+}
+
+.form-container button {
+    width: 48%; /* Adjust button width */
+    padding: 10px;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.client-login {
+    background-color: #0066cc;
+}
+
+.client-login:hover {
+    background-color: #004d99;
+}
+
+.staff-login {
+    background-color: #4CAF50;
+}
+
+.staff-login:hover {
+    background-color: #388E3C;
+}
+
+.create-account {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.create-account a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}

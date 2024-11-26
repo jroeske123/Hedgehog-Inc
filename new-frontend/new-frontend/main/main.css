@@ -1,0 +1,89 @@
+
+body{
+    position:relative;
+    margin: 0;
+    background-color:bisque;
+    display: flex;
+    justify-content: center;
+}
+
+.top{
+    width: 100%;
+    height: 10vh;
+    background-color:#A0CDCF;
+    
+}
+.top > div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.top>div>div{
+    background-color: rgba(240, 255, 255, 0);
+    width: 30%;
+    height: 70%;
+    display: flex;
+    align-content: end;
+    padding: 0;
+}
+.logins{
+    width: 70%;
+    margin-bottom: 5%;
+}
+
+#log{
+    display: flex;
+    align-items: end;
+    width: 30%;
+}
+#hedgehog{
+    width: 150%;
+    background-color: rgba(0, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    text-align: start;
+   
+}
+#hedgehog >h1{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 0;
+    text-shadow: 7px 10px 8.8px #00000040;
+    -webkit-text-stroke: 1px #000000;
+    font-family: "Khmer-Regular", Helvetica;
+    font-weight: 300;
+    color: #575757;
+    font-size: 68px;
+    text-align: center;
+    letter-spacing: 10px;
+  
+}
+#ej{
+    align-self: center;
+}
+
+/* size of the content */
+.main{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(#CAECEC,#516565);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* links */
+a:link{
+    font-family: "Khmer-Regular", Helvetica;
+    font-weight: 300;
+    color: #575757;
+    text-decoration: none;
+    font-size: 130%;
+}
+
+a:visited{
+    color: #575757;
+}
