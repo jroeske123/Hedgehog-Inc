@@ -1,0 +1,117 @@
+/* also for payment */
+
+.sides{
+    height: 100%;
+    width: 49%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Khmer-Regular", Helvetica;
+}
+
+.sides>div{
+    margin-bottom: 3%;
+}
+
+#name{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#name>div{
+    margin-left: 1%;
+    font-size: 6vh;
+}
+
+#app{
+    width: 90%;
+    height: 100%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3vh;
+}
+#upcomming{
+    width: 100%;
+    height: 10%;
+    /* background-color: bisque; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#appoitments{
+    width: 85%;
+    height: 10%;
+    /* background-color: rgb(183, 212, 203); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.current{
+    width: 70%;
+    height: 35%;
+    background-color: #A0CDCF;
+    border-radius: 40px;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 4vh;
+}
+.current>div{
+    /* background-color: aquamarine; */
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#care{
+    margin-top: 2%;
+    height: 65%;
+
+}
+
+#care>div{
+    display: flex;
+    /* background-color: antiquewhite; */
+    width: 100%;
+    height: 20%;
+    justify-content: center;
+    font-size: 3vh;
+    
+}
+
+.team{
+    display: flex;
+    justify-content: start;
+}
+
+#careTeam>div{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+}
+
+.doctor{
+    width: 100%;
+    justify-content: left;
+    align-items: left;
+    margin-left: 5%;
+    /* background-color: blueviolet; */
+}
+
+
+

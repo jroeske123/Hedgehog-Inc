@@ -1,0 +1,77 @@
+<!-- new About Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <!-- main style -->
+    <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/main.css">
+    <!-- second main -->
+    <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/secondMain.css">
+    <!-- this page style -->
+    <link rel="stylesheet" href="/new-frontend/loginPages/client/styles/message.css">
+</head>
+<body>
+    <div class="main">
+        <div class="top">
+            <div>
+                <div></div>
+                <div id="hedgehog">
+                        <img id="ej" src="/new-frontend/photos/ej.png" alt="hedgehog" width="130" height="130">
+                        <H1>HEDGEHOG INC</H1>
+                </div>
+                <!-- login sign up home -->
+            </div>
+        </div>
+        <!-- center -->
+        <div class="center" style="background: linear-gradient(#BDCAFE,#7E7A98);">
+            <div id="info">
+                <div class="dashboard">
+                    <div class="light">
+                        <a href="/new-frontend/loginPages/stuff/staff-dashboard.html">Overview</a>
+                    </div>
+                    <div class="light">
+                        <a href="/new-frontend/loginPages/stuff/staff-profile.html">Profile</a>
+                    </div>
+                    <div class="light">
+                        <a href="/new-frontend/loginPages/stuff/staff-appointments.html">Manage Appointments</a>
+                    </div>
+                    <div class="light">
+                        <a href="/new-frontend/loginPages/stuff/staff-history.html">Patient History</a>
+                    </div>
+                    <div class="light" id="here">
+                        <a href="/new-frontend/loginPages/stuff/staff-messaging.html">Messaging</a>
+                    </div>
+                    <div class="light">
+                        <a href="/new-frontend/loginPages/stuff/staff-salary.html">Salary</a>
+                    </div>
+                    <div class="light" id="logOut">
+                        <a href="/new-frontend/main/homeP.html">Log Out</a>
+                    </div>
+                </div>
+            </div>
+                <div id="message-page">
+                    <div class="form-container">
+                        <form>
+                            <h2>Contact Us</h2>
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                            
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                            
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

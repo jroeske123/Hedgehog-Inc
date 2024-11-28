@@ -2,19 +2,19 @@
     margin-left: 10%;
     width: 80%;
     border-collapse: collapse;
-    background-color: #b0e0e6;
+    background-color: #B0BDEE;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     margin-top: 4%;
     height: 90%;
 }
 
 .appointment-table thead {
-    background-color: #d8f3f5;
+    background-color: #D9D9D9;
 }
 
 .appointment-table th,
 .appointment-table td {
-    border: 1px solid #a5d5d9;
+    border: 1px solid #000000;
     text-align: center;
     padding: 10px;
 }
@@ -26,10 +26,11 @@
 
 .appointment-table td {
     font-size: 16px;
+    max-height: 1px;
 }
 
 .appointment-table tr:nth-child(even) {
-    background-color: #d8f3f5;
+    background-color: #cfd6f0;
 }
 
 
