@@ -10,7 +10,8 @@
     <!-- second main -->
     <link rel="stylesheet" href="/new-frontend/loginPages/client/secondMain.css">
     <!-- this page style -->
-    <link rel="stylesheet" href="/new-frontend/loginPages/client/styles/appoit.css">    
+    <link rel="stylesheet" href="/new-frontend/loginPages/client/styles/appoit.css">
+    <link rel="stylesheet" href="/new-frontend/loginPages/client/styles/insideApp.css">   
 </head>
 <body>
     <div class="main">
@@ -57,11 +58,59 @@
            
             
             <div id="rigthSide">
+                <!-- white background -->
+                <div>
+                    <!-- holder of a Doctor and Reason -->
+                    <div class="holdDR" style="width: 40%; background-color: #536767;">
+                        <!-- Doctor -->
+                        <div class="doctor">
+                            
+                        </div>
 
+                        <!-- Reason-->
+                        <div class= "choose">
+                            <div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- holder for a Calendar -->
+                    <div class="holdC">
+                        <div class="container">
+                            <div class="calendar">
+                                <div class="calendar-header">
+                                    <button class="prev" onclick="changeMonth(-1)">&#60;</button>
+                                    <span id="monthYear" class="month-year"></span>
+                                    <button class="next" onclick="changeMonth(1)">&#62;</button>
+                                </div>
+                                <table id="calendarTable" class="calendar-table"></table>
+                            </div>
+                    
+                            <!-- Time slot section now appears under the calendar -->
+                            <div class="time-slots" id="timeSlotsSection" style="display: none;">
+                                <h2>Available Timings</h2>
+                                <ul id="timeSlotList"></ul>
+                                <button id="submitBtn" onclick="confirmAppointment()">Confirm Appointment</button>
+                            </div>
+                        </div>
+                    
+                        <div id="overlay" class="overlay"></div>  <!-- This is the greyish overlay -->
+                        <div id="confirmationPopup" class="confirmation-popup">
+                            <div class="popup-content">
+                                <span class="close-btn" onclick="closePopup()">×</span>
+                                <h3>Your appointment is confirmed!</h3>
+                                <p id="appointmentDetails"></p>
+                            </div>
+                        </div>
+                        
+                        <script src="/my-backend/appoitmentJs/script.js"></script>
+                        
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- about us/services -->
-   
     </div>
 </body>
 </html>
