@@ -1,4 +1,5 @@
 console.log("Connected");
+
 const form = document.getElementById('form')
 const username_input = document.getElementById('username-input')
 const email_input = document.getElementById('email-input')
@@ -10,7 +11,7 @@ console.log('Username: ', username_input);
 console.log('Email: ', email_input);
 console.log('Password: ', password_input);
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
     
     let errors = []
     
@@ -27,11 +28,34 @@ form.addEventListener('submit', (e) => {
         e.preventDefault()
         error_message.innerText = errors.join(". ")
     }
-    else if (email_input){
-
-    }
     else{
+        // Handle no errors in form submission (login / register)
+        const data = {
+            username: username_input.value,
+            email: email_input ? email_input.value : null,
+            password: password_input.value
+        };
 
+        try{
+            const response = await fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(response.ok){
+                console.log('Request successful');
+                // Handle success
+            }
+            else{
+                console.log('Request failed');
+                // Handle Failure
+            }
+        } catch(error){
+            console.log('Error', error);
+        }
     }
 })
 

@@ -2,13 +2,17 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
-const sendEmail = require('./mailer'); 
+// const sendEmail = require('./mailer'); 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../new-frontend')));
+
+app.get('/', (req, res) =>{
+    res.sendFile(path.join(__dirname, '../new-frontend/main', 'homeP.html'));
+});
 
 const db = mysql.createConnection({
     host: "csc131final-csc131final.k.aivencloud.com",
@@ -27,6 +31,7 @@ app.get('/api/data', (req, res) => {
     res.send('API is working!');
 });
 
+/*
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message} = req.body;
   
@@ -42,6 +47,7 @@ app.post('/send-email', async (req, res) => {
       res.status(500).send({ message: 'Failed to send email', error: error.message });
     }
   });
+*/
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
