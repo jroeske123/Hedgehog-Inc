@@ -31,12 +31,19 @@
             
             <div class="form-container">
                 <h2>Sign In</h2>
-                <form>
-                  <input type="text" placeholder="Username" required>
-                  <input type="password" placeholder="Password" required>
+                <p id="error-message"></p>
+                <form id="form">
+                  <input type="text" name="username" id="username-input" placeholder="Username">
+                  <input type="password" name="password" id="password-input" placeholder="Password">
                   <div  class="button-container">
-                    <button class="client-login" type="button"><a href="/new-frontend/loginPages/client/clientdashbord.html" style="color: white;">Client Login</button></a>
-                    <button class="staff-login" type="button"><a href="/new-frontend/loginPages/stuff/staff-dashboard.html" style="color: white;">Staff Login</button></a>
+                    <button class="client-login" type="submit">
+                      Client Login
+                      <!-- <a href="/new-frontend/loginPages/client/clientdashbord.html" style="color: white;"></a> -->
+                    </button>
+                    <button class="staff-login" type="submit">
+                      Staff Login
+                      <!-- <a href="/new-frontend/loginPages/stuff/staff-dashboard.html" style="color: white;"></a> -->
+                    </button>
                   </div>
                 </form>
                 <p class="create-account">
@@ -50,5 +57,6 @@
 
         </div>
     </div>
+    <script src="../../../my-backend/validation.js" defer></script>
 </body>
 </html>
