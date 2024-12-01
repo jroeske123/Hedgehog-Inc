@@ -69,23 +69,6 @@
     background-color: #388E3C; /* Darker green on hover */
 }
 
-
-.client-login {
-    background-color: #0066cc;
-}
-
-.client-login:hover {
-    background-color: #004d99;
-}
-
-.staff-login {
-    background-color: #4CAF50;
-}
-
-.staff-login:hover {
-    background-color: #388E3C;
-}
-
 .create-account {
     margin-top: 15px;
     font-size: 14px;
