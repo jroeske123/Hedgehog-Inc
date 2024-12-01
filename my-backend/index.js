@@ -3,10 +3,14 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const path = require('path');
 const sendEmail = require('./mailer'); 
+const bcrypt = require("bcrypt");
+const bodyParser = require("body-parser");
+const saltRounds = 12;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // Serve static files
@@ -35,7 +39,100 @@ db.connect(err => {
 app.get('/api/data', (req, res) => {
     res.send('API is working!');
 });
+app.post("/register", (req, res) => {
+  const { username, email, password, role } = req.body;
 
+  if (!username || !email || !password || !role) {
+      return res.status(400).json({ error: "All fields, including role, are required" });
+  }
+
+  const roleId = role === "staff" ? 1 : 0; // 1 for staff, 0 for clients
+
+  // Check if user already exists
+  db.query(
+      "SELECT * FROM userlogins WHERE email = ?",
+      [email],
+      (err, results) => {
+          if (err) {
+              console.error(err);
+              return res.status(500).json({ error: "Database error" });
+          }
+
+          if (results.length > 0) {
+              return res.status(400).json({ error: "Email already exists" });
+          }
+
+          // Hash password and insert into database
+          bcrypt.hash(password, saltRounds, (err, hash) => {
+              if (err) {
+                  console.error(err);
+                  return res.status(500).json({ error: "Error hashing password" });
+              }
+
+              db.query(
+                  "INSERT INTO userlogins (username, email, password, roleid) VALUES (?, ?, ?, ?)",
+                  [username, email, hash, roleId],
+                  (error, results) => {
+                      if (error) {
+                          console.error(error);
+                          return res.status(500).json({ error: "Database insertion error" });
+                      }
+                      res.status(201).json({ message: `User registered successfully as ${role}` });
+                  }
+              );
+          });
+      }
+  );
+});
+
+// **Login endpoint**
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+      return res.status(400).json({ error: "Username and password are required" });
+  }
+
+  // Query to find the user by username
+  db.query(
+      "SELECT * FROM userlogins WHERE username = ?",
+      [username],
+      (err, results) => {
+          if (err) {
+              console.error(err);
+              return res.status(500).json({ error: "Database error" });
+          }
+
+          if (results.length === 0) {
+              return res.status(404).json({ error: "User not found" });
+          }
+
+          const user = results[0];
+
+          // Compare the provided password with the hashed password
+          bcrypt.compare(password, user.password, (err, isMatch) => {
+              if (err) {
+                  console.error(err);
+                  return res.status(500).json({ error: "Error comparing passwords" });
+              }
+
+              if (isMatch) {
+                  // Check the user's role and respond with the appropriate dashboard link
+                  const rolePage = user.roleid === 1
+                      ? "/new-frontend/loginPages/stuff/staff-dashboard.html"
+                      : "/new-frontend/loginPages/client/clientdashbord.html";
+
+                  return res.status(200).json({ 
+                      message: "Login successful", 
+                      redirectTo: rolePage 
+                  });
+              } else {
+                  return res.status(401).json({ error: "Incorrect password" });
+              }
+          });
+      }
+  );
+});
 // Handle email sending
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message } = req.body;

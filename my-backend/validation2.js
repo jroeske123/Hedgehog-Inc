@@ -1,3 +1,4 @@
+/*
 // DB SIDE
 const db = require('./index');
 const express = require('express');
@@ -8,7 +9,7 @@ const saltRounds = 4;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.post('/submit', (req, res) => {
+app.post("http://localhost:3000/submit", (req, res) => {
     const { username, email, password } = req.body;
     
     if(email){
@@ -44,3 +45,4 @@ app.post('/submit', (req, res) => {
         })
     }
 })
+*/

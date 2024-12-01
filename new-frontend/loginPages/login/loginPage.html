@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="main.css" />
     <!-- this page style -->
      <link rel="stylesheet" href="/new-frontend/loginPages/login/style/loginPage.css">
+     <script src="/new-frontend/loginPages/login/script/login.js"></script>
 </head>
 <body>
     <div class="main">
@@ -33,19 +34,12 @@
                 <h2>Sign In</h2>
                 <p id="error-message"></p>
                 <form id="form">
-                  <input type="text" name="username" id="username-input" placeholder="Username">
-                  <input type="password" name="password" id="password-input" placeholder="Password">
-                  <div  class="button-container">
-                    <button class="client-login" type="submit">
-                      Client Login
-                      <!-- <a href="/new-frontend/loginPages/client/clientdashbord.html" style="color: white;"></a> -->
-                    </button>
-                    <button class="staff-login" type="submit">
-                      Staff Login
-                      <!-- <a href="/new-frontend/loginPages/stuff/staff-dashboard.html" style="color: white;"></a> -->
-                    </button>
+                  <input type="text" name="username" id="username-input" placeholder="Username" required>
+                  <input type="password" name="password" id="password-input" placeholder="Password" required>
+                  <div class="button-container">
+                      <button type="submit">Login</button>
                   </div>
-                </form>
+              </form>
                 <p class="create-account">
                   Not registered? <a href="/new-frontend/loginPages/login/registration.html">Create an account</a>
                 </p>

@@ -1,3 +1,4 @@
+/*
 console.log("Connected");
 
 const form = document.getElementById('form')
@@ -37,7 +38,7 @@ form.addEventListener('submit', async (e) => {
         };
 
         try{
-            const response = await fetch('/submit', {
+            const response = await fetch("http://localhost:3000/submit", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -95,3 +96,4 @@ function getLoginErrors(username, password){
 
     return errors;
 }
+*/
