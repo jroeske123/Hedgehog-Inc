@@ -55,26 +55,59 @@ app.post('/send-email', async (req, res) => {
 
 // Handle payment submission
 app.post('/submit-payment', (req, res) => {
-    const { cardName, cardNumber, expDate, cvv, amount } = req.body;
+  const { cardName, cardNumber, expDate, cvv, amount } = req.body;
 
-    // Validate input
-    if (!cardName || !cardNumber || !expDate || !cvv || !amount) {
-        return res.status(400).json({ error: 'All fields are required' });
-    }
+  // Validate input
+  if (!cardName || !cardNumber || !expDate || !cvv || !amount) {
+      return res.status(400).json({ error: 'All fields are required' });
+  }
 
-    // Assume a fixed client ID for simplicity (in a real app, this should be dynamic)
-    const clientId = 1; 
+  const parsedAmount = parseFloat(amount);
 
-    // Query to update the balance in the database
-    const query = "UPDATE clients SET balance = balance - ? WHERE id = ?";
-    
-    db.query(query, [parseFloat(amount), clientId], (err, result) => {
-        if (err) {
-            console.error('Error updating balance:', err);
-            return res.status(500).json({ error: 'Failed to process payment' });
-        }
-        res.status(200).json({ message: 'Payment processed successfully' });
-    });
+  // Query to check if the user exists
+  const checkUserQuery = "SELECT * FROM clients WHERE card_number = ?";
+  db.query(checkUserQuery, [cardNumber], (err, results) => {
+      if (err) {
+          console.error('Error checking user:', err);
+          return res.status(500).json({ error: 'Database error' });
+      }
+
+      if (results.length > 0) {
+          // User exists, update their balance
+          const user = results[0];
+          const newBalance = user.balance - parsedAmount;
+
+          if (newBalance < 0) {
+              return res.status(400).json({ error: 'Insufficient balance' });
+          }
+
+          const updateBalanceQuery = "UPDATE clients SET balance = ? WHERE card_number = ?";
+          db.query(updateBalanceQuery, [newBalance, cardNumber], (err) => {
+              if (err) {
+                  console.error('Error updating balance:', err);
+                  return res.status(500).json({ error: 'Failed to process payment' });
+              }
+              return res.status(200).json({ message: 'Payment processed successfully', balance: newBalance });
+          });
+      } else {
+          // User doesn't exist, insert a new user
+          const initialBalance = 5000; // Default initial balance
+          const newBalance = initialBalance - parsedAmount;
+
+          if (newBalance < 0) {
+              return res.status(400).json({ error: 'Insufficient balance for new user' });
+          }
+
+          const insertUserQuery = "INSERT INTO clients (name, card_number, balance) VALUES (?, ?, ?)";
+          db.query(insertUserQuery, [cardName, cardNumber, newBalance], (err) => {
+              if (err) {
+                  console.error('Error adding new user:', err);
+                  return res.status(500).json({ error: 'Failed to add new user' });
+              }
+              return res.status(201).json({ message: 'New user added and payment processed', balance: newBalance });
+          });
+      }
+  });
 });
 
 // Start the server
