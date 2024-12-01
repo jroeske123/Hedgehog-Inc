@@ -47,22 +47,28 @@
 }
 
 .form-container .button-container {
-    display: flex; /* Flexbox to arrange buttons horizontally */
-    justify-content: space-between; /* Distribute buttons evenly */
-    gap: 10px; /* Optional: adds space between buttons */
+    display: flex; /* Flexbox to align items */
+    justify-content: center; /* Center the button horizontally */
 }
 
 .form-container button {
-    width: 48%; /* Adjust button width */
+    width: 60%; /* Adjust button width to look balanced */
     padding: 10px;
-    margin: 0;
+    margin: 0 auto; /* Center the button in its container */
     border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px; /* Slightly larger font for better visibility */
     font-weight: bold;
     color: white;
+    background-color: #4CAF50; /* Green background */
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
 }
+
+.form-container button:hover {
+    background-color: #388E3C; /* Darker green on hover */
+}
+
 
 .client-login {
     background-color: #0066cc;
