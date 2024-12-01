@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/secondMain.css">
     <!-- this page style -->
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/messaging.css">
+    <script src="/new-frontend/loginPages/stuff/scripts/messagin.js" defer></script>
 </head>
 <body>
     <div class="main">
@@ -53,7 +54,7 @@
             </div>
                 <div id="message-page">
                     <div class="form-container">
-                        <form>
+                        <form id="contact-form">
                             <h2>Contact Us</h2>
                             <label for="name">Name:</label>
                             <input type="text" id="name" name="name" placeholder="Your Name" required>
@@ -67,7 +68,7 @@
                             <label for="message">Message:</label>
                             <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
                             
-                            <button type="submit">Submit</button>
+                            <button type="submit" id="submit-button">Submit</button>
                         </form>
                     </div>
                 </div>
