@@ -3,8 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;  /* Add space between calendar and time slots */
-    width: 320px;  /* Fixed width for alignment */
+    gap: 5%; /* Add space between calendar and time slots */
+    width: 90%;
+    height: 100%;
 }
 
 /* Calendar styles */
@@ -12,16 +13,26 @@
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 180%;
-    height: 40%;
+    padding: 1.5%;
+    margin-top: 2%;
+    width: 100%;
+    height: 45%;
+
 }
 
+#calendarTable{
+    width: 100%;
+    height: 80%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
 /* Calendar header with month navigation */
 .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    height: 15%;
 }
 
 button {
@@ -42,19 +53,19 @@ button:hover {
 /* Table for calendar days */
 .calendar-table {
     width: 100%;
-    margin-top: 20px;
     border-collapse: collapse;
 }
 
 .calendar-table th,
 .calendar-table td {
-    padding: 10px;
+    /* padding: 10px; */
+    padding: 2%;
     text-align: center;
-    width: 30px;
+    width: 10%;
 }
 
 .calendar-table th {
-    background-color: #4CAF50;
+    background-color: #497d7a;
     color: white;
 }
 
@@ -79,11 +90,17 @@ button:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     padding-left: 5%;
     padding-right: 5%;
-    width: 170%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columns */
     grid-template-rows: repeat(3, 1fr); /* 3 rows */
     gap: 10px;  /* Space between time slots */
+}
+
+.time-slots>h2{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: 10%;
 }
 
 /* Time slot list (remove the list style and make them grid items) */
@@ -94,11 +111,16 @@ button:hover {
     display: grid;
     grid-template-columns: repeat(7, 1fr); /* 7 columns */
     grid-template-rows: repeat(3, 1fr); /* 3 rows */
-    gap: 10px;
+    width: 100%;
+    height: 80%;
+    gap: 3%;
+    align-items: center;
 }
 
 .time-slots li {
-    padding: 8px;
+    width: 85%;
+    height: 70%;
+    padding: 10%;
     text-align: center;
     cursor: pointer;
     border: 1px solid #ddd;
@@ -107,7 +129,7 @@ button:hover {
 }
 
 .time-slots li:hover {
-    background-color: #d1f7d1;
+    background-color: #96dfe2;
 }
 
 button#submitBtn {
@@ -156,6 +178,11 @@ button#submitBtn:hover {
     width: 100%;
     z-index: 1000; /* Above the overlay */
     display: none; /* Hidden initially */
+}
+
+#submitBtn{
+    width: 30%;
+    height: 11%
 }
 
 /* Close button style (now positioned at the top-right of the pop-up) */

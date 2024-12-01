@@ -186,14 +186,14 @@ function confirmAppointment() {
 
 // Show the confirmation popup with overlay
 function showPopup() {
-  document.getElementById('overlay').style.display = 'block';  // Show the overlay
-  document.getElementById('confirmationPopup').style.display = 'flex';  // Show the pop-up
+  document.getElementById('overlay').style.display = 'block'; 
+  document.getElementById('confirmationPopup').style.display = 'flex';  
 }
 
-// Close the confirmation popup and hide the overlay
+// Close the confirmation popup
 function closePopup() {
-  document.getElementById('overlay').style.display = 'none';  // Hide the overlay
-  document.getElementById('confirmationPopup').style.display = 'none';  // Hide the pop-up
+  document.getElementById('overlay').style.display = 'none';  
+  document.getElementById('confirmationPopup').style.display = 'none';  
   resetAppointment();
 }
 
