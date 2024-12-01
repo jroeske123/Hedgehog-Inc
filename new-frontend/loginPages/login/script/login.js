@@ -27,8 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
 
             if (response.ok) {
+                localStorage.setItem("id", result.id);
+                localStorage.setItem("balance", result.balance);
                 alert(result.message);
-                // Redirect to the appropriate dashboard
                 window.location.href = result.redirectTo;
             } else {
                 errorMessage.textContent = result.error || "Login failed.";

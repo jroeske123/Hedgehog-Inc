@@ -12,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 // Serve static files
 app.use(express.static(path.join(__dirname, '../new-frontend')));
 
@@ -87,52 +86,65 @@ app.post("/register", (req, res) => {
 
 // **Login endpoint**
 app.post("/login", (req, res) => {
-  const { username, password } = req.body;
+    const { username, password } = req.body;
 
-  if (!username || !password) {
-      return res.status(400).json({ error: "Username and password are required" });
-  }
+    if (!username || !password) {
+        return res.status(400).json({ error: "Username and password are required" });
+    }
 
-  // Query to find the user by username
-  db.query(
-      "SELECT * FROM userlogins WHERE username = ?",
-      [username],
-      (err, results) => {
-          if (err) {
-              console.error(err);
-              return res.status(500).json({ error: "Database error" });
-          }
+    db.query(
+        "SELECT * FROM userlogins WHERE username = ?",
+        [username],
+        (err, results) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: "Database error" });
+            }
 
-          if (results.length === 0) {
-              return res.status(404).json({ error: "User not found" });
-          }
+            if (results.length === 0) {
+                return res.status(404).json({ error: "User not found" });
+            }
 
-          const user = results[0];
+            const user = results[0];
+            bcrypt.compare(password, user.password, (err, isMatch) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ error: "Error comparing passwords" });
+                }
 
-          // Compare the provided password with the hashed password
-          bcrypt.compare(password, user.password, (err, isMatch) => {
-              if (err) {
-                  console.error(err);
-                  return res.status(500).json({ error: "Error comparing passwords" });
-              }
+                if (isMatch) {
+                    const rolePage = user.roleid === 1
+                        ? "/new-frontend/loginPages/stuff/staff-dashboard.html"
+                        : "/new-frontend/loginPages/client/clientdashbord.html";
 
-              if (isMatch) {
-                  // Check the user's role and respond with the appropriate dashboard link
-                  const rolePage = user.roleid === 1
-                      ? "/new-frontend/loginPages/stuff/staff-dashboard.html"
-                      : "/new-frontend/loginPages/client/clientdashbord.html";
+                    // Fetch user's balance
+                    db.query(
+                        "SELECT balance FROM userlogins WHERE id = ?",
+                        [user.id],
+                        (balanceErr, balanceResults) => {
+                            if (balanceErr) {
+                                console.error(balanceErr);
+                                return res.status(500).json({ error: "Failed to fetch balance" });
+                            }
 
-                  return res.status(200).json({ 
-                      message: "Login successful", 
-                      redirectTo: rolePage 
-                  });
-              } else {
-                  return res.status(401).json({ error: "Incorrect password" });
-              }
-          });
-      }
-  );
+                            const balance = balanceResults[0]?.balance || 0;
+
+                            return res.status(200).json({
+                                message: "Login successful",
+                                redirectTo: rolePage,
+                                id: user.id,
+                                balance,
+                            });
+                        }
+                    );
+                } else {
+                    return res.status(401).json({ error: "Incorrect password" });
+                }
+            });
+        }
+    );
 });
+
 // Handle email sending
 app.post('/send-email', async (req, res) => {
     const { name, email, subject, message } = req.body;
@@ -149,62 +161,78 @@ app.post('/send-email', async (req, res) => {
       res.status(500).send({ message: 'Failed to send email', error: error.message });
     }
 });
+// Endpoint to fetch user balance
+// Endpoint to fetch user balance
+app.get('/get-balance', (req, res) => {
+    const { id } = req.query;
+
+    if (!id) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    db.query("SELECT balance FROM userlogins WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching user balance:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+    
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+    
+        let balance = results[0].balance;
+        
+        // Convert balance to a number if it's not already a number
+        balance = parseFloat(balance);
+    
+        // Check if balance is a valid number
+        if (isNaN(balance)) {
+            return res.status(500).json({ error: 'Invalid balance value' });
+        }
+    
+        return res.status(200).json({ balance });
+    });
+    
+});
+
 
 // Handle payment submission
 app.post('/submit-payment', (req, res) => {
-  const { cardName, cardNumber, expDate, cvv, amount } = req.body;
+    const { id, amount } = req.body;
 
-  // Validate input
-  if (!cardName || !cardNumber || !expDate || !cvv || !amount) {
-      return res.status(400).json({ error: 'All fields are required' });
-  }
+    if (!id || !amount) {
+        return res.status(400).json({ error: 'User ID and amount are required' });
+    }
 
-  const parsedAmount = parseFloat(amount);
+    const parsedAmount = parseFloat(amount);
 
-  // Query to check if the user exists
-  const checkUserQuery = "SELECT * FROM clients WHERE card_number = ?";
-  db.query(checkUserQuery, [cardNumber], (err, results) => {
-      if (err) {
-          console.error('Error checking user:', err);
-          return res.status(500).json({ error: 'Database error' });
-      }
+    // Fetch user's current balance
+    db.query("SELECT balance FROM userlogins WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching user balance:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
 
-      if (results.length > 0) {
-          // User exists, update their balance
-          const user = results[0];
-          const newBalance = user.balance - parsedAmount;
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
 
-          if (newBalance < 0) {
-              return res.status(400).json({ error: 'Insufficient balance' });
-          }
+        const currentBalance = results[0].balance;
+        const newBalance = currentBalance - parsedAmount;
 
-          const updateBalanceQuery = "UPDATE clients SET balance = ? WHERE card_number = ?";
-          db.query(updateBalanceQuery, [newBalance, cardNumber], (err) => {
-              if (err) {
-                  console.error('Error updating balance:', err);
-                  return res.status(500).json({ error: 'Failed to process payment' });
-              }
-              return res.status(200).json({ message: 'Payment processed successfully', balance: newBalance });
-          });
-      } else {
-          // User doesn't exist, insert a new user
-          const initialBalance = 5000; // Default initial balance
-          const newBalance = initialBalance - parsedAmount;
+        if (newBalance < 0) {
+            return res.status(400).json({ error: 'Insufficient balance' });
+        }
 
-          if (newBalance < 0) {
-              return res.status(400).json({ error: 'Insufficient balance for new user' });
-          }
-
-          const insertUserQuery = "INSERT INTO clients (name, card_number, balance) VALUES (?, ?, ?)";
-          db.query(insertUserQuery, [cardName, cardNumber, newBalance], (err) => {
-              if (err) {
-                  console.error('Error adding new user:', err);
-                  return res.status(500).json({ error: 'Failed to add new user' });
-              }
-              return res.status(201).json({ message: 'New user added and payment processed', balance: newBalance });
-          });
-      }
-  });
+        // Update balance
+        db.query("UPDATE userlogins SET balance = ? WHERE id = ?", [newBalance, id], (updateErr) => {
+            if (updateErr) {
+                console.error('Error updating balance:', updateErr);
+                return res.status(500).json({ error: 'Failed to process payment' });
+            }
+            return res.status(200).json({ message: 'Payment processed successfully', balance: newBalance });
+        });
+    });
 });
 
 // Start the server
