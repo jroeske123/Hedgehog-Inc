@@ -1,3 +1,60 @@
+.choose{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
+    width: 100%;
+    height: 100%;
+}
+
+.choose>h3{
+    font-size: 3vh;
+}
+/* Style for the reason list */
+.choose ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-self: start;
+    width: 60%;
+    height: 100%;
+}
+
+.reason-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10%
+}
+
+.reason-text {
+    margin-left: 10px;
+    font-size: 3vh;
+}
+
+/* Style for the clickable square next to each item */
+.square {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #536767;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Style for the selected square */
+.square.selected {
+    background-color: #536767;
+    border-color: #fff;
+}
+
+/* Optional: change text color when selected */
+.reason-item.selected .reason-text {
+    color: #536767;
+}
+
+
+
 /* Layout container (flex column for vertical stacking) */
 .container {
     display: flex;

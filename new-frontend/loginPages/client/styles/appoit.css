@@ -20,56 +20,10 @@
 #rigthSide>div>div{
     width: 60%;
     height: 100%;
-    /* background-color: aqua; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-
-/* Doctor */
-.doctor{
-    height: 20%;
-    width: 100%;
-    /* background-color: aquamarine; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.doctor>div{
-    height: 50%;
-    width: 90%;
-    background-color: brown;
-    font-size: 2vh;
-}
-
-/* choose a doctor */
-
-
-/* Reason to choose */
-/* .choose{
-    height: 80%;
-    width: 100%;
-    background-color: aquamarine;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-} */
-
-/* .choose>div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 90%;
-    width: 90%;
-    background-color: brown;
-    font-size: 2vh;
-    margin-bottom: 5%;
-} */
 
 .holdC{
     height: 100%;
