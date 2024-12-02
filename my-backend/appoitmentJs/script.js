@@ -126,7 +126,7 @@ function handleDayClick(date) {
 
 
 function selectTimeSlot(slot) {
-    // If there's a previously selected time slot, remove the 'selected' class
+    // Deselect previously selected slot
     const previouslySelectedSlot = document.querySelector('.time-slots li.selected');
     if (previouslySelectedSlot) {
         previouslySelectedSlot.classList.remove('selected');
@@ -135,12 +135,11 @@ function selectTimeSlot(slot) {
     // Set the new selected time slot
     selectedTimeSlot = slot;
 
-    // Find the corresponding list item (time slot) and add the 'selected' class
+    // Find the corresponding time slot list item and highlight it
     const timeSlotListItems = document.querySelectorAll('.time-slots li');
     timeSlotListItems.forEach(item => {
-        // Compare the text content of each item with the selected slot
         if (item.textContent.trim() === slot) {
-            item.classList.add('selected'); // Add the 'selected' class
+            item.classList.add('selected'); // Highlight this slot
         }
     });
 }
@@ -165,16 +164,21 @@ function generateTimeSlots() {
 // Render available time slots in a 3x7 grid
 function renderTimeSlots() {
     const timeSlotList = document.getElementById('timeSlotList');
-    timeSlotList.innerHTML = ''; // Clear the list
-  
-    // Generate time slots and add them to the grid
-    timeSlots.slice(0, 21).forEach(slot => {  // Ensure only 21 slots are shown
+    timeSlotList.innerHTML = ''; // Clear the existing list of time slots
+
+    // Generate time slots and add them to the list
+    timeSlots.slice(0, 21).forEach(slot => {  // Limit to 21 time slots for display
         const li = document.createElement('li');
         li.textContent = slot;
-        li.onclick = () => selectTimeSlot(slot);  // Make the slot selectable
+
+        // Add click event listener to select time slot when clicked
+        li.onclick = () => {
+            selectTimeSlot(slot, li);  // Pass the clicked li element along with the slot
+        };
+
         timeSlotList.appendChild(li);
     });
-  }
+}
 
 
 // Show the time slots section
@@ -190,7 +194,17 @@ function hideTimeSlots() {
 // Store the selected time slot
 let selectedTimeSlot = null;
 
-function selectTimeSlot(slot) {
+function selectTimeSlot(slot, liElement) {
+    // Deselect previously selected slot
+    const previouslySelectedSlot = document.querySelector('.time-slots li.selected');
+    if (previouslySelectedSlot) {
+        previouslySelectedSlot.classList.remove('selected');
+    }
+
+    // Add the 'selected' class to the clicked slot
+    liElement.classList.add('selected');
+
+    // Store the selected time slot
     selectedTimeSlot = slot;
 }
 
@@ -227,4 +241,5 @@ function resetAppointment() {
   hideTimeSlots();
   renderCalendar();
 }
+
 
