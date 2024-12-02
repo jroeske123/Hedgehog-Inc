@@ -49,7 +49,7 @@
 
 
 /* Reason to choose */
-.choose{
+/* .choose{
     height: 80%;
     width: 100%;
     background-color: aquamarine;
@@ -57,9 +57,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
+} */
 
-.choose>div{
+/* .choose>div{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +69,7 @@
     background-color: brown;
     font-size: 2vh;
     margin-bottom: 5%;
-}
+} */
 
 .holdC{
     height: 100%;

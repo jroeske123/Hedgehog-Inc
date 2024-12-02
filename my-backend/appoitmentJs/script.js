@@ -125,6 +125,28 @@ function handleDayClick(date) {
 }
 
 
+function selectTimeSlot(slot) {
+    // If there's a previously selected time slot, remove the 'selected' class
+    const previouslySelectedSlot = document.querySelector('.time-slots li.selected');
+    if (previouslySelectedSlot) {
+        previouslySelectedSlot.classList.remove('selected');
+    }
+
+    // Set the new selected time slot
+    selectedTimeSlot = slot;
+
+    // Find the corresponding list item (time slot) and add the 'selected' class
+    const timeSlotListItems = document.querySelectorAll('.time-slots li');
+    timeSlotListItems.forEach(item => {
+        // Compare the text content of each item with the selected slot
+        if (item.textContent.trim() === slot) {
+            item.classList.add('selected'); // Add the 'selected' class
+        }
+    });
+}
+
+
+
 // Generate time slots from 8 AM to 6 PM, every 30 minutes
 function generateTimeSlots() {
     const slots = [];
@@ -142,17 +164,17 @@ function generateTimeSlots() {
 
 // Render available time slots in a 3x7 grid
 function renderTimeSlots() {
-  const timeSlotList = document.getElementById('timeSlotList');
-  timeSlotList.innerHTML = ''; // Clear the list
-
-  // Generate time slots and add them to the grid
-  timeSlots.slice(0, 21).forEach(slot => {  // Ensure only 21 slots are shown
-      const li = document.createElement('li');
-      li.textContent = slot;
-      li.onclick = () => selectTimeSlot(slot);
-      timeSlotList.appendChild(li);
-  });
-}
+    const timeSlotList = document.getElementById('timeSlotList');
+    timeSlotList.innerHTML = ''; // Clear the list
+  
+    // Generate time slots and add them to the grid
+    timeSlots.slice(0, 21).forEach(slot => {  // Ensure only 21 slots are shown
+        const li = document.createElement('li');
+        li.textContent = slot;
+        li.onclick = () => selectTimeSlot(slot);  // Make the slot selectable
+        timeSlotList.appendChild(li);
+    });
+  }
 
 
 // Show the time slots section
