@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert(result.message);
                 // Redirect to appropriate dashboard
                 const redirectUrl = role === "staff" 
-                    ? "/new-frontend/loginPages/stuff/staff-dashboard.html" 
-                    : "/new-frontend/loginPages/client/clientdashbord.html";
+                    ? "/new-frontend/loginPages/login/loginPage.html" 
+                    : "/new-frontend/loginPages/login/loginPage.html";
                 window.location.href = redirectUrl;
             } else {
                 errorMessage.textContent = result.error || "Registration failed.";

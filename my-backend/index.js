@@ -243,7 +243,7 @@ app.post('/submit-payment', (req, res) => {
         const newBalance = currentBalance - parsedAmount;
 
         if (newBalance < 0) {
-            return res.status(400).json({ error: 'Insufficient balance' });
+            return res.status(400).json({ error: 'The amount entered is bigger than needed' });
         }
 
         // Update balance
