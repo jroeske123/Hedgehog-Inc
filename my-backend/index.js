@@ -393,6 +393,42 @@ app.get('/calculate-expected-check', (req, res) => {
     );
 });
 
+// Endpoint to save appointment
+app.post("/save-appointment", (req, res) => {
+    const { userId, date, time, reasons } = req.body;
+
+    if (!userId || !date || !time) {
+        return res.status(400).json({ error: "User ID, date, and time are required." });
+    }
+
+    // Convert date to 'YYYY-MM-DD' format
+    const appointmentDate = new Date(date);
+    
+    if (isNaN(appointmentDate.getTime())) {
+        return res.status(400).json({ error: "Invalid date format." });
+    }
+
+    const formattedDate = appointmentDate.toISOString().split('T')[0];  // Get 'YYYY-MM-DD'
+
+    // If reasons are provided, join them into a single string (or JSON array)
+    const reasonsStr = reasons ? reasons.join(', ') : '';  // Convert array of reasons into a string
+
+    db.query(
+        "INSERT INTO appointments (user_id, date, time, reasons) VALUES (?, ?, ?, ?)",
+        [userId, formattedDate, time, reasonsStr],  // Insert formatted date and reason string
+        (err, results) => {
+            if (err) {
+                console.error("Error inserting appointment:", err);
+                return res.status(500).json({ error: "Database error." });
+            }
+
+            res.status(200).json({ success: true });
+        }
+    );
+});
+
+
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

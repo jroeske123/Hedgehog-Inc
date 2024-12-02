@@ -208,17 +208,60 @@ function selectTimeSlot(slot, liElement) {
     selectedTimeSlot = slot;
 }
 
+function getSelectedReasons() {
+    const reasons = [];
+    const reasonItems = document.querySelectorAll('.reason-item input[type="checkbox"]:checked');
+    reasonItems.forEach(item => {
+        reasons.push(item.value);
+    });
+    return reasons;
+}
 // Confirm the appointment
 function confirmAppointment() {
-  if (!selectedDate || !selectedTimeSlot) {
-      alert("Please select a date and time.");
-      return;
-  }
+    if (!selectedDate || !selectedTimeSlot) {
+        alert("Please select a date and time.");
+        return;
+    }
+  
+    const userId = localStorage.getItem("id"); // Get the logged-in user ID
+    const selectedReasons = getSelectedReasons(); // Get the selected reasons
+    
+    // If no reason is selected, prompt the user
+    if (selectedReasons.length === 0) {
+        alert("Please select a reason for your appointment.");
+        return;
+    }
 
-  const appointmentDetails = `Date: ${selectedDate.toLocaleDateString()} \nTime: ${selectedTimeSlot}`;
-  document.getElementById('appointmentDetails').textContent = appointmentDetails;
-  showPopup();
+    const appointmentDetails = {
+        userId: userId,
+        date: selectedDate.toLocaleDateString(),
+        time: selectedTimeSlot,
+        reasons: selectedReasons // Include selected reasons
+    };
+  
+    // Send the appointment data to the server
+    fetch('http://localhost:3000/save-appointment', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentDetails),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showPopup();
+        } else {
+            alert('Error confirming appointment: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    });
 }
+
+  
 
 // Show the confirmation popup with overlay
 function showPopup() {
@@ -242,33 +285,5 @@ function resetAppointment() {
   renderCalendar();
 }
 
-// Array to store selected reasons
-let selectedReasons = [];
-
-// Toggle the selected reasons in the array
-function toggleReason(checkbox) {
-    if (checkbox.checked) {
-        selectedReasons.push(checkbox.value); // Add reason to the array
-    } else {
-        selectedReasons = selectedReasons.filter(reason => reason !== checkbox.value); // Remove reason from the array
-    }
-    console.log("Selected Reasons:", selectedReasons); // For debugging
-}
-
-// Modify confirmAppointment to include selected reasons
-function confirmAppointment() {
-    if (!selectedDate || !selectedTimeSlot || selectedReasons.length === 0) {
-        alert("Please select a date, time, and at least one reason.");
-        return;
-    }
-
-    const appointmentDetails = `
-        Date: ${selectedDate.toLocaleDateString()} 
-        Time: ${selectedTimeSlot}
-        Reasons: ${selectedReasons.join(', ')}
-    `;
-    document.getElementById('appointmentDetails').textContent = appointmentDetails;
-    showPopup();
-}
 
 
