@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/secondMain.css">
     <!-- this page style -->
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/salary.css">
+    <script src="/new-frontend/loginPages/stuff/scripts/salary.js"></script>
 </head>
 <body>
     <div class="main">
@@ -57,37 +58,32 @@
                 <div class="sides">
                     <div id="app" style="background-color: #B0BDEE;">
                         <div id="upcomming" style="width: 100%; height: 25%;">
-                            <p>Current Bi-weekly Statistics</p>
+                            <p>Calculator</p>
                         </div>
                         <div id="appoitments">
-                            <p style="width: 100%; margin-right: 15%;">Hours:10</p>
+                            <label for="hours" class="hours-label">Hours worked today:</label>
+                            <input type="text" id="hours" name="hours" placeholder="Enter hours" required class="hours-input">
                         </div>
                         <div id="appoitments">
-                            <p style="width: 100%;  margin-right: 15%;">Salary: $84.64</p>
+                            <label for="salary" class="salary-label">Salary:</label>
+                            <input type="text" id="salary" name="salary" placeholder="Enter your Salary" required class="hours-input">
                         </div>
+                        <!-- Add the Submit Button -->
                         <div id="appoitments">
-                            <p style="width: 100%;  margin-right: 15%;">Patients worked on: 3</p>
-                        </div>
-                        <div id="appoitments">
-                            <p style="width: 100%;  margin-right: 15%;">Future Check: 846.4</p>
+                            <button type="submit" id="submitButton" class="submit-btn">Submit</button>
                         </div>
                     </div>
+                    
                     <div id="app" style="background-color: #B0BDEE;">
                             <div id="upcomming" style="width: 100%; height: 25%;">
-                                <p>Previous Paycheck</p>
+                                <p>PayCheck</p>
                             </div>
                             <div id="appoitments">
-                                <p style="width: 100%; margin-right: 15%;">Hours: 72</p>
+                                <p id="totalHours">Total Hours: Loading...</p>
                             </div>
                             <div id="appoitments">
-                                <p style="width: 100%;  margin-right: 15%;">Salary: $84.64</p>
-                            </div>
-                            <div id="appoitments">
-                                <p style="width: 100%;  margin-right: 15%;">Patients worked on: 15</p>
-                            </div>
-                            <div id="appoitments">
-                                <p style="width: 100%;  margin-right: 15%;">Previous Check: $6,094.08</p>
-                            </div>
+                                <p id="expectedCheck">Expected Check: Loading...</p>
+                            </div>                            
                         </div>
                     </div>
                 </div>

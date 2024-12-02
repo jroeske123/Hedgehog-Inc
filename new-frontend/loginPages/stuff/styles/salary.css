@@ -35,15 +35,7 @@
     font-size: 4vh;
 }
 
-#appoitments{
-    width: 85%;
-    height: 10%;
-    /* background-color: rgb(183, 212, 203); */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 4vh;
-}
+
 
 .current{
     width: 70%;
@@ -65,4 +57,63 @@
 }
 
 
+/* Adjust label and input layout */
+#appoitments {
+    width: 85%; /* Set width for the container */
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    justify-content: flex-start; /* Align to the left */
+    font-size: 4vh;
+    align-items: flex-start; /* Align elements to the left */
+    margin-bottom: 20px; /* Add spacing between sections */
+}
 
+/* Styling for labels to align them to the left */
+.hours-label, .salary-label {
+    font-size: 3vh;
+    color: #333;
+    font-weight: bold; 
+    margin-bottom: 5px; /* Space between label and input */
+    text-align: left; /* Align label to the left */
+}
+
+/* Adjust input fields */
+.hours-input, .salary-input {
+    width: 100%; /* Make input span the entire width of the container */
+    padding: 12px 15px;
+    font-size: 2.5vh;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+/* Focus styling for inputs */
+.hours-input:focus, .salary-input:focus {
+    border-color: #7e7a98; /* Change border color when focused */
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 10px rgba(126, 122, 152, 0.3); /* Add shadow effect */
+}
+
+/* Styling for the submit button */
+.submit-btn {
+    margin-top: 5%;;
+    width: 100%; /* Make the button span the entire width */
+    padding: 12px 15px;
+    font-size: 2.5vh;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #7e7a98;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover and focus effects for the submit button */
+.submit-btn:hover, .submit-btn:focus {
+    background-color: #6b6784;
+    box-shadow: 0 0 10px rgba(126, 122, 152, 0.3);
+    outline: none;
+}

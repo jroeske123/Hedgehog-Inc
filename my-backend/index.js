@@ -315,7 +315,6 @@ app.delete("/delete-user", (req, res) => {
         res.status(200).json({ message: "Account deleted successfully." });
     });
 });
-
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
