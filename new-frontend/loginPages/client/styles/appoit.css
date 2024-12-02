@@ -81,5 +81,10 @@
     align-items: center;
 }
 
-
+.time-slots li.selected {
+    background-color: #4CAF50; /* Highlight color */
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
 

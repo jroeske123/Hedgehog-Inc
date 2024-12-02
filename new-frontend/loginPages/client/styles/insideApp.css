@@ -257,8 +257,10 @@ td.selected {
 }
 
 /* Highlight the selected time slot */
-.time-slots li.selected {
-    background-color: #536767; /* Highlight color */
-    color: white; /* Text color when selected */
-}
 
+.time-slots li.selected {
+    background-color: #57a6a2; /* Highlight color */
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+}
