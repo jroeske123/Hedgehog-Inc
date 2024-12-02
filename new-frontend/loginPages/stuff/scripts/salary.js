@@ -1,44 +1,95 @@
 // Wait until the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Get the submit button and input fields
     const submitButton = document.getElementById("submitButton");
     const hoursInput = document.getElementById("hours");
     const salaryInput = document.getElementById("salary");
 
-    // Add an event listener to the submit button
-    submitButton.addEventListener("click", function(event) {
-        // Prevent the default form submission behavior
+    // Assume userId is available globally after login
+    const userId = localStorage.getItem("id");
+
+    // Function to fetch and update total hours
+    function updateTotalHours() {
+        fetch(`http://localhost:3000/get-total-hours?userId=${userId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch total hours.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const totalHoursElement = document.querySelector("#totalHours");
+                if (totalHoursElement) {
+                    totalHoursElement.textContent = `Total Hours: ${data.totalHours}`;
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching total hours:", error);
+            });
+    }
+
+    // Function to fetch and update the expected check
+    function updateExpectedCheck() {
+        fetch(`http://localhost:3000/calculate-expected-check?userId=${userId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Failed to fetch expected check.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const expectedCheckElement = document.querySelector("#expectedCheck");
+                if (expectedCheckElement) {
+                    expectedCheckElement.textContent = `Expected Check: $${data.expectedCheck.toFixed(2)}`;
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching expected check:", error);
+            });
+    }
+
+    // Submit button event listener
+    submitButton.addEventListener("click", function (event) {
         event.preventDefault();
 
-        // Get the values of the inputs
         const hours = hoursInput.value;
         const salary = salaryInput.value;
 
-        // Simple validation to ensure that both fields are filled
-        if (hours && salary) {
-            // You can now submit the values to a backend, or just display them
-            alert(`Hours worked: ${hours}\nSalary: ${salary}`);
+        if (userId && hours && salary) {
+            const payload = {
+                userId,
+                hours: parseFloat(hours),
+                salary: parseFloat(salary),
+            };
 
-            // You can also send this data to the server using AJAX, for example:
-            /*
-            fetch('/submit-salary', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ hours: hours, salary: salary })
+            fetch("http://localhost:3000/save-hours-salary", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-            */
-
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(errorData => {
+                            throw new Error(errorData.error || "Failed to save data");
+                        });
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    updateTotalHours(); // Update total hours after successful save
+                    updateExpectedCheck(); // Update expected check after successful save
+                    alert("Data saved successfully!");
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Failed to save data. Please try again.");
+                });
         } else {
-            alert("Please fill in both fields.");
+            alert("Please fill in all fields.");
         }
     });
+
+    // Initial fetches on page load
+    updateTotalHours();
+    updateExpectedCheck();
 });

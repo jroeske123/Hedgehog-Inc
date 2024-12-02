@@ -312,6 +312,87 @@ app.delete("/delete-user", (req, res) => {
         res.status(200).json({ message: "Account deleted successfully." });
     });
 });
+
+// Endpoint to save hours and salary
+app.post("/save-hours-salary", (req, res) => {
+    const { userId, hours, salary } = req.body;
+
+    if (!userId || !hours || !salary) {
+        return res.status(400).json({ error: "User ID, hours, and salary are required." });
+    }
+
+    const parsedHours = parseFloat(hours);
+    const parsedSalary = parseFloat(salary);
+
+    if (isNaN(parsedHours) || isNaN(parsedSalary)) {
+        return res.status(400).json({ error: "Invalid hours or salary value." });
+    }
+
+    db.query(
+        "INSERT INTO user_hours_salary (user_id, hours, salary) VALUES (?, ?, ?)",
+        [userId, parsedHours, parsedSalary],
+        (err, results) => {
+            if (err) {
+                console.error("Error inserting data:", err);
+                return res.status(500).json({ error: "Database error." });
+            }
+
+            res.status(200).json({ message: "Data saved successfully." });
+        }
+    );
+});
+
+// Endpoint to fetch total hours
+app.get('/get-total-hours', (req, res) => {
+    const { userId } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: "User ID is required." });
+    }
+
+    db.query(
+        "SELECT SUM(hours) AS totalHours FROM user_hours_salary WHERE user_id = ?",
+        [userId],
+        (err, results) => {
+            if (err) {
+                console.error("Database error:", err);
+                return res.status(500).json({ error: "Database error." });
+            }
+
+            const totalHours = results[0]?.totalHours || 0; // Default to 0 if no records
+            res.status(200).json({ totalHours });
+        }
+    );
+});
+
+app.get('/calculate-expected-check', (req, res) => {
+    const { userId } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'User ID is required.' });
+    }
+
+    // Query to fetch total hours and salary
+    db.query(
+        `SELECT SUM(hours) AS totalHours, AVG(salary) AS averageSalary 
+         FROM user_hours_salary 
+         WHERE user_id = ?`,
+        [userId],
+        (err, results) => {
+            if (err) {
+                console.error("Database error:", err);
+                return res.status(500).json({ error: "Database error." });
+            }
+
+            const totalHours = results[0]?.totalHours || 0;
+            const averageSalary = results[0]?.averageSalary || 0;
+            const expectedCheck = totalHours * averageSalary;
+
+            res.status(200).json({ totalHours, averageSalary, expectedCheck });
+        }
+    );
+});
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
