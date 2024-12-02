@@ -64,31 +64,32 @@
                     <!-- holder of a Doctor and Reason -->
                     <div class="holdDR" style="width: 40%;">
                         <!-- Reason-->
-                        <div class= "choose">
+                        <div class="choose">
                             <h3>Select Your Reason</h3>
-                                <ul id="reasonList">
-                                    <li class="reason-item">
-                                        <span class="square" onclick="selectReason(this)"></span>
-                                        <span class="reason-text">Tooth Pain</span>
-                                    </li>
-                                    <li class="reason-item">
-                                        <span class="square" onclick="selectReason(this)"></span>
-                                        <span class="reason-text">Checkup</span>
-                                    </li>
-                                    <li class="reason-item">
-                                        <span class="square" onclick="selectReason(this)"></span>
-                                        <span class="reason-text">Cleaning</span>
-                                    </li>
-                                    <li class="reason-item">
-                                        <span class="square" onclick="selectReason(this)"></span>
-                                        <span class="reason-text">Root Canal</span>
-                                    </li>
-                                    <li class="reason-item">
-                                        <span class="square" onclick="selectReason(this)"></span>
-                                        <span class="reason-text">Filling</span>
-                                    </li>
-                                </ul>
+                            <ul id="reasonList">
+                                <li class="reason-item">
+                                    <input type="checkbox" id="reasonToothPain" value="Tooth Pain" onclick="toggleReason(this)" />
+                                    <label for="reasonToothPain">Tooth Pain</label>
+                                </li>
+                                <li class="reason-item">
+                                    <input type="checkbox" id="reasonCheckup" value="Checkup" onclick="toggleReason(this)" />
+                                    <label for="reasonCheckup">Checkup</label>
+                                </li>
+                                <li class="reason-item">
+                                    <input type="checkbox" id="reasonCleaning" value="Cleaning" onclick="toggleReason(this)" />
+                                    <label for="reasonCleaning">Cleaning</label>
+                                </li>
+                                <li class="reason-item">
+                                    <input type="checkbox" id="reasonRootCanal" value="Root Canal" onclick="toggleReason(this)" />
+                                    <label for="reasonRootCanal">Root Canal</label>
+                                </li>
+                                <li class="reason-item">
+                                    <input type="checkbox" id="reasonFilling" value="Filling" onclick="toggleReason(this)" />
+                                    <label for="reasonFilling">Filling</label>
+                                </li>
+                            </ul>
                         </div>
+                        
                     </div>
 
 
