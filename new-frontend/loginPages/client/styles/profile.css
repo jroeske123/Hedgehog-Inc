@@ -10,13 +10,12 @@
 
 /* General Container Styling */
 .form-container {
-    width: 100%;
-    max-width: 500px;
+    width: 20%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 2%;
     background-color: #c6e6e8; /* Light teal to match the color scheme */
     border: 1px solid #89b5b7; /* Slightly darker teal */
-    border-radius: 10px;
+    border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     color: #333;
@@ -90,7 +89,8 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 20%;
+    width: 100%;
+    height: 100%;
 }
 
 #delete-btn {
