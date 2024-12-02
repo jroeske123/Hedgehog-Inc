@@ -30,11 +30,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     paymentForm.addEventListener("submit", async (event) => {
         event.preventDefault(); // Prevent default form submission
 
-        const cardName = document.getElementById("card-name").value;
-        const cardNumber = document.getElementById("card-number").value;
-        const expDate = document.getElementById("exp-date").value;
-        const cvv = document.getElementById("cvv").value;
-        const amount = document.getElementById("amount").value;
+        const cardName = document.getElementById("card-name").value.trim();
+        const cardNumber = document.getElementById("card-number").value.trim();
+        const expDate = document.getElementById("exp-date").value.trim();
+        const cvv = document.getElementById("cvv").value.trim();
+        const amount = document.getElementById("amount").value.trim();
+
+        // Validate all fields
+        if (!cardName) {
+            alert("Please enter the cardholder's name.");
+            return;
+        }
+
+        if (!cardNumber || !/^\d{16}$/.test(cardNumber)) {
+            alert("Please enter a valid 16-digit card number.");
+            return;
+        }
+
+        if (!expDate || !/^\d{2}\/\d{2}$/.test(expDate)) {
+            alert("Please enter a valid expiration date in MM/YY format.");
+            return;
+        }
+
+        if (!cvv || !/^\d{3}$/.test(cvv)) {
+            alert("Please enter a valid 3-digit CVV.");
+            return;
+        }
 
         if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
             alert("Please enter a valid payment amount.");

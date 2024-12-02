@@ -195,7 +195,29 @@ app.get('/get-balance', (req, res) => {
     
 });
 
+app.get('/get-username', (req, res) => {
+    const { id } = req.query;
 
+    if (!id) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    db.query("SELECT username FROM userlogins WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching user username:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+    
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        let username = results[0].username;
+    
+        return res.status(200).json({ username });
+    });
+    
+});
 // Handle payment submission
 app.post('/submit-payment', (req, res) => {
     const { id, amount } = req.body;
@@ -221,7 +243,7 @@ app.post('/submit-payment', (req, res) => {
         const newBalance = currentBalance - parsedAmount;
 
         if (newBalance < 0) {
-            return res.status(400).json({ error: 'Insufficient balance' });
+            return res.status(400).json({ error: 'The amount entered is bigger than needed' });
         }
 
         // Update balance
@@ -235,6 +257,61 @@ app.post('/submit-payment', (req, res) => {
     });
 });
 
+// Update user profile
+app.post("/update-profile", (req, res) => {
+    const { id, username, password } = req.body;
+
+    if (!id || !username || !password) {
+        return res.status(400).json({ error: "User ID, username, and password are required." });
+    }
+
+    // Hash the new password
+    bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+        if (err) {
+            console.error("Error hashing password:", err);
+            return res.status(500).json({ error: "Failed to hash password." });
+        }
+
+        // Update user information in the database
+        db.query(
+            "UPDATE userlogins SET username = ?, password = ? WHERE id = ?",
+            [username, hashedPassword, id],
+            (dbErr, results) => {
+                if (dbErr) {
+                    console.error("Database error:", dbErr);
+                    return res.status(500).json({ error: "Failed to update profile." });
+                }
+
+                if (results.affectedRows === 0) {
+                    return res.status(404).json({ error: "User not found." });
+                }
+
+                res.status(200).json({ message: "Profile updated successfully." });
+            }
+        );
+    });
+});
+
+app.delete("/delete-user", (req, res) => {
+    const { id } = req.body;
+
+    if (!id) {
+        return res.status(400).json({ error: "User ID is required." });
+    }
+
+    db.query("DELETE FROM userlogins WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error("Database error:", err);
+            return res.status(500).json({ error: "Failed to delete user." });
+        }
+
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: "User not found." });
+        }
+
+        res.status(200).json({ message: "Account deleted successfully." });
+    });
+});
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
