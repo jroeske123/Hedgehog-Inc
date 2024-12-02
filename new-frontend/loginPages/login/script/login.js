@@ -10,11 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const username = usernameInput.value.trim();
         const password = passwordInput.value.trim();
 
+        // Validation of inputs
         if (!username || !password) {
             errorMessage.textContent = "Username and password are required.";
             return;
         }
 
+        if(password.length > 16){
+            errorMessage.textContent = "Password is too long.";
+            return;
+        }
+
+        if(password.length < 6){
+            errorMessage.textContent = "Password is too short.";
+            return;
+        }
+
+        // Passing to login process
         try {
             const response = await fetch("http://localhost:3000/login", {
                 method: "POST",
@@ -26,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const result = await response.json();
 
+            // Logging in with corresponding data if valid
             if (response.ok) {
                 localStorage.setItem("id", result.id);
                 localStorage.setItem("balance", result.balance);

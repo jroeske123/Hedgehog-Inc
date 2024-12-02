@@ -13,11 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
         const password = passwordInput.value.trim();
         const role = event.submitter.classList.contains("staff-login") ? "staff" : "client";
 
+        // Validation of input fields
         if (!username || !email || !password) {
             errorMessage.textContent = "All fields are required.";
             return;
         }
 
+        if(password.length > 16){
+            errorMessage.textContent = "Password is too long.";
+            return;
+        }
+
+        if(password.length < 6){
+            errorMessage.textContent = "Password is too short.";
+            return;
+        }
+
+        // Passing to registration process
         try {
             const response = await fetch("http://localhost:3000/register", {
                 method: "POST",

@@ -161,7 +161,7 @@ app.post('/send-email', async (req, res) => {
       res.status(500).send({ message: 'Failed to send email', error: error.message });
     }
 });
-// Endpoint to fetch user balance
+
 // Endpoint to fetch user balance
 app.get('/get-balance', (req, res) => {
     const { id } = req.query;
@@ -195,6 +195,7 @@ app.get('/get-balance', (req, res) => {
     
 });
 
+// Getting username for display
 app.get('/get-username', (req, res) => {
     const { id } = req.query;
 
@@ -218,6 +219,7 @@ app.get('/get-username', (req, res) => {
     });
     
 });
+
 // Handle payment submission
 app.post('/submit-payment', (req, res) => {
     const { id, amount } = req.body;
@@ -292,6 +294,7 @@ app.post("/update-profile", (req, res) => {
     });
 });
 
+// Process for deleting a user
 app.delete("/delete-user", (req, res) => {
     const { id } = req.body;
 
@@ -312,6 +315,7 @@ app.delete("/delete-user", (req, res) => {
         res.status(200).json({ message: "Account deleted successfully." });
     });
 });
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
