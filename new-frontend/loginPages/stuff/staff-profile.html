@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/secondMain.css">
     <!-- this page style -->
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/profile.css">
+    <script src="/new-frontend/loginPages/client/scripts/clientprofile.js"></script>
 </head>
 <body>
     <div class="main">
@@ -53,13 +54,13 @@
             </div>
                 <div id="message-page">
                     <div class="form-container">
-                        <form>
+                        <form id="update-profile-form">
                             <h2>Update Profile</h2>
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" placeholder="Your Username" required>
                             
                             <label for="password">Password:</label>
-                            <input type="Password" id="password" name="password" placeholder="Your Password" required>
+                            <input type="password" id="password" name="password" placeholder="Your Password" required>
                             
                             <button type="submit">Update Information</button>
                             <div class="breaker"></div>
