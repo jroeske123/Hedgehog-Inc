@@ -9,7 +9,7 @@
     background-color:rgb(255, 255, 255);
     height: 95%;
     width: 95%;
-    border-radius: 50px;
+    border-radius: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,10 +35,10 @@
     align-items: center;
 }
 
-.time-slots li.selected {
-    background-color: #4CAF50; /* Highlight color */
-    color: white;
-    border-radius: 20px;
-    font-weight: bold;
+.holdDR{
+    background-color: #85bab7;;
+    color: aliceblue;
+    font-weight: 600;
 }
+
 

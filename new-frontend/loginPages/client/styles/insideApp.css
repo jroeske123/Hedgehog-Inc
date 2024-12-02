@@ -33,6 +33,13 @@
     font-size: 3vh;
 }
 
+#reasonList>li{
+    width: 100%;
+    height: 15%;
+    font-size: 3vh;
+    gap: 3%;
+}
+
 /* Style for the clickable square next to each item */
 .square {
     width: 20px;
@@ -41,19 +48,6 @@
     background-color: white;
     cursor: pointer;
 }
-
-/* Style for the selected square */
-.square.selected {
-    background-color: #536767;
-    border-color: #fff;
-}
-
-/* Optional: change text color when selected */
-.reason-item.selected .reason-text {
-    color: #536767;
-}
-
-
 
 /* Layout container (flex column for vertical stacking) */
 .container {
@@ -67,7 +61,7 @@
 /* Calendar styles */
 .calendar {
     background-color: white;
-    border-radius: 8px;
+    border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     padding: 1.5%;
     margin-top: 2%;
@@ -122,9 +116,6 @@ button:hover {
     height: 16%;
 }
 
-.calendar-table th{
-}
-
 .calendar-table td {
     text-align: center;
     width: 10%;
@@ -155,8 +146,8 @@ button:hover {
 /* Time slot section */
 .time-slots {
     background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     padding-left: 4%;
     padding-right: 4%;
     margin-top: 2%;
@@ -171,8 +162,9 @@ button:hover {
     margin-top: 2%;
     margin-bottom: 1%;
     height: 10%;
-    font-size: 2vh;
+    font-size: 3vh;
     color: #244745;
+    justify-self: center;
 }
 
 
@@ -208,8 +200,8 @@ button:hover {
 }
 
 .time-slots li:hover {
-    background-color: #96dfe2;
-    transition: 0.8s;
+    background-color: #90c1c0;
+    color: white;
 }
 
 button#submitBtn {
@@ -229,7 +221,9 @@ button#submitBtn {
 }
 
 button#submitBtn:hover {
-    background-color: #45a049;
+    background-color:  #90c1c0;
+    color: #ffffff;
+    transition: 0.5s;
 }
 
 
@@ -284,7 +278,7 @@ button#submitBtn:hover {
     align-items: center;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Small shadow for depth */
-    z-index: 1001; /* Ensure it's on top of other elements */
+    z-index: 1001; 
 }
 
 .close-btn:hover {
@@ -320,4 +314,9 @@ td.selected {
     color: white;
     border-radius: 20px;
     font-weight: bold;
+}
+
+input.BOX{
+    transform: scale(200%);
+
 }
