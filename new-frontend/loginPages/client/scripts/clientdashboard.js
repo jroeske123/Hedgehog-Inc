@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         appointmentsData.forEach(appointment => {
             const formattedDate = formatDate(appointment.date); // Format the appointment date
             const appointmentItem = document.createElement('p');
-            appointmentItem.textContent = `- ${formattedDate}: ${appointment.reasons}`;
+            appointmentItem.textContent = `- ${appointment.time} on ${formattedDate}: ${appointment.reasons}`;
             appointmentsElement.appendChild(appointmentItem);
         });
 
@@ -55,8 +55,6 @@ function formatDate(dateString) {
         year: 'numeric',
         month: 'short',  // Abbreviated month (e.g., "Dec")
         day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
         hour12: true, // AM/PM format
     });
 }
