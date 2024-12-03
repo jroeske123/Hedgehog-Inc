@@ -28,7 +28,7 @@
     height: 50%;
     background-color: rgba(127, 255, 212, 0);
     margin: 1%;
-
+    font-family: "Khmer-Regular", Helvetica;
 }
 
 .book>h2{
