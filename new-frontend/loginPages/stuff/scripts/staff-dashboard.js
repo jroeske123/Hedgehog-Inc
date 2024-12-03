@@ -5,9 +5,6 @@ function formatDate(dateString) {
         year: 'numeric',
         month: 'short',  // Abbreviated month (e.g., "Dec")
         day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true, // AM/PM format
     });
 }
 
