@@ -63,6 +63,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         try {
+            if (!confirm('Are you sure you want to pay this amount: ' + amount + '?')) return;
+
             const response = await fetch("http://localhost:3000/submit-payment", {
                 method: "POST",
                 headers: {
