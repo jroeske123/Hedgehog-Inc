@@ -65,5 +65,22 @@
     align-items: center;
 }
 
+.choose-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5% 30%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 4vh;
+    margin: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.choose-button:hover {
+    background-color: #45a049;
+}
 
 

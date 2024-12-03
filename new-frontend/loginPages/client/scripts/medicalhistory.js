@@ -1,4 +1,15 @@
-const userId = localStorage.getItem("id"); // This should be dynamically set based on the logged-in user, such as from session or JWT token
+// Function to format date
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+        weekday: 'short', // Abbreviated weekday (e.g., "Mon")
+        year: 'numeric',
+        month: 'short',  // Abbreviated month (e.g., "Dec")
+        day: 'numeric'
+    });
+}
+
+const userId = localStorage.getItem("id"); // This should be dynamically set based on the logged-in user
 
 // Fetch the appointments for this user
 fetch(`http://localhost:3000/get-appointments-clients?userId=${userId}`)
@@ -17,11 +28,11 @@ fetch(`http://localhost:3000/get-appointments-clients?userId=${userId}`)
             const row = document.createElement("tr");
 
             const timeCell = document.createElement("td");
-            timeCell.textContent = appointment.time;
+            timeCell.textContent = appointment.time; // Assuming time is a separate field
             row.appendChild(timeCell);
 
             const dateCell = document.createElement("td");
-            dateCell.textContent = appointment.date;
+            dateCell.textContent = formatDate(appointment.date); // Format the date
             row.appendChild(dateCell);
 
             const treatmentCell = document.createElement("td");
