@@ -470,6 +470,61 @@ app.get("/get-appointments-clients", (req, res) => {
         }
     );
 });
+
+app.post("/save-plan", (req, res) => {
+    const { userId, planType } = req.body;
+
+    if (!userId || !planType) {
+        return res.status(400).json({ error: "User ID and plan type are required." });
+    }
+
+    const validPlans = ["monthly", "weekly"];
+    if (!validPlans.includes(planType)) {
+        return res.status(400).json({ error: "Invalid plan type." });
+    }
+
+    // Save the selected plan to the database
+    db.query(
+        "UPDATE userlogins SET plan = ? WHERE id = ?",
+        [planType, userId],
+        (err, results) => {
+            if (err) {
+                console.error("Database error:", err);
+                return res.status(500).json({ error: "Failed to save plan." });
+            }
+
+            if (results.affectedRows === 0) {
+                return res.status(404).json({ error: "User not found." });
+            }
+
+            res.status(200).json({ success: true, message: "Plan saved successfully." });
+        }
+    );
+});
+
+// Endpoint to fetch the user's current plan
+app.get('/get-plan', (req, res) => {
+    const { id } = req.query;
+
+    if (!id) {
+        return res.status(400).json({ error: "User ID is required." });
+    }
+
+    db.query("SELECT plan FROM userlogins WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error("Database error:", err);
+            return res.status(500).json({ error: "Database error." });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: "User not found." });
+        }
+
+        const plan = results[0].plan || "No plan selected";
+        res.status(200).json({ plan });
+    });
+});
+
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
