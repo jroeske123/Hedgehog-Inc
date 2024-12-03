@@ -222,44 +222,61 @@ function confirmAppointment() {
         alert("Please select a date and time.");
         return;
     }
-  
+
     const userId = localStorage.getItem("id"); // Get the logged-in user ID
     const selectedReasons = getSelectedReasons(); // Get the selected reasons
-    
-    // If no reason is selected, prompt the user
+
     if (selectedReasons.length === 0) {
         alert("Please select a reason for your appointment.");
         return;
     }
 
-    const appointmentDetails = {
-        userId: userId,
-        date: selectedDate.toLocaleDateString(),
-        time: selectedTimeSlot,
-        reasons: selectedReasons // Include selected reasons
-    };
-  
-    // Send the appointment data to the server
-    fetch('http://localhost:3000/save-appointment', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(appointmentDetails),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            showPopup();
-        } else {
-            alert('Error confirming appointment: ' + data.error);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
+    // Fetch the username from the server
+    fetch(`http://localhost:3000/get-username?id=${userId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.username) {
+                alert("Error fetching username.");
+                return;
+            }
+
+            const username = data.username;
+
+            const appointmentDetails = {
+                userId: userId,
+                username: username, // Include username
+                date: selectedDate.toLocaleDateString(),
+                time: selectedTimeSlot,
+                reasons: selectedReasons
+            };
+
+            // Send the appointment data to the server
+            fetch('http://localhost:3000/save-appointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(appointmentDetails),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showPopup();
+                    } else {
+                        alert('Error confirming appointment: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        })
+        .catch(error => {
+            console.error('Error fetching username:', error);
+            alert('Error fetching user data.');
+        });
 }
+
 
   
 

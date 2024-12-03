@@ -36,8 +36,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         appointmentsElement.innerHTML = ''; // Clear existing appointments
         appointmentsData.forEach(appointment => {
             const formattedDate = formatDate(appointment.date); // Format the appointment date
-            const appointmentItem = document.createElement('p');
-            appointmentItem.textContent = `- ${formattedDate}: ${appointment.reasons}`;
+
+            // Create a new div element for each appointment
+            appointmentItem.classList.add('appointment-item'); // Add a class for styling
+            appointmentItem.style.marginBottom = "10px"; // Add spacing between appointments
+            
+            const appointmentText = document.createElement('p');
+            appointmentText.textContent = `- ${formattedDate}: ${appointment.reasons}`;
+            appointmentItem.appendChild(appointmentText);
             appointmentsElement.appendChild(appointmentItem);
         });
 
@@ -46,17 +52,3 @@ document.addEventListener("DOMContentLoaded", async () => {
         alert("Failed to load user data. Please try again later.");
     }
 });
-
-// Function to format date (already provided in your code)
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleString('en-US', {
-        weekday: 'short', // For abbreviated weekday (e.g., "Mon")
-        year: 'numeric',
-        month: 'short',  // Abbreviated month (e.g., "Dec")
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true, // AM/PM format
-    });
-}

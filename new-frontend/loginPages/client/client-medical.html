@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new-frontend/loginPages/client/secondMain.css">
     <!-- this page style -->
     <link rel="stylesheet" href="/new-frontend/loginPages/client/styles/medical.css">
+    <script src="/new-frontend/loginPages/client/scripts/medicalhistory.js"></script>
 </head>
 <body>
     <div class="main">
@@ -58,34 +59,16 @@
             
             <div id="rigthSide">
                 <body>
-                    <table class="appointment-table">
+                    <table class="appointment-table" id="appointmentsTable">
                         <thead>
                             <tr>
                                 <th class="smallRow">Time</th>
                                 <th class="smallRow">Date</th>
-                                <th class="smallRow">Doctor</th>
                                 <th class="bigRow">Treatment Received</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>9 AM</td>
-                                <td>9/12/24</td>
-                                <td>Lebron</td>
-                                <td>Cavity Removal</td>
-                            </tr>
-                            <tr>
-                                <td>3 PM</td>
-                                <td>9/10/24</td>
-                                <td>Bronny</td>
-                                <td>Wisdom Tooth Removal</td>
-                            </tr>
-                            <tr>
-                                <td>4 PM</td>
-                                <td>8/11/24</td>
-                                <td>Bryce</td>
-                                <td>Cavity Removal</td>
-                            </tr>
+                            <!-- Appointments will be dynamically inserted here -->
                         </tbody>
                     </table>
                 </body>

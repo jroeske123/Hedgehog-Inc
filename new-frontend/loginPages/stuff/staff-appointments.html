@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/secondMain.css">
     <!-- this page style -->
     <link rel="stylesheet" href="/new-frontend/loginPages/stuff/styles/appointment.css">
+    <script src="/new-frontend/loginPages/stuff/scripts/staff-appointment.js"></script>
 </head>
 <body>
     <div class="main">
@@ -61,6 +62,7 @@
                                 <th class="smallRow">Date</th>
                                 <th class="smallRow">Patient</th>
                                 <th class="bigRow">Treatment</th>
+                                <th class="smallRow">Actions</th> <!-- New column -->
                             </tr>
                         </thead>
                         <tbody>
@@ -69,14 +71,17 @@
                                 <td>9/12/24</td>
                                 <td>George</td>
                                 <td>Cavity Removal</td>
+                                <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
                             </tr>
                             <tr>
                                 <td>10 AM</td>
                                 <td>9/12/24</td>
                                 <td>Lebron</td>
                                 <td>Root Canal</td>
+                                <td><button class="delete-btn" onclick="deleteRow(this)">Delete</button></td>
                             </tr>
                         </tbody>
+                        
                     </table>
                 </body>
                 </html>

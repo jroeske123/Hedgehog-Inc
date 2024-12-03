@@ -154,7 +154,7 @@ app.post('/send-email', async (req, res) => {
     }
   
     try {
-      await sendEmail(name, email, message, subject);
+      await sendEmail(name, email, subject, message);
       res.status(200).send({ message: 'Email sent successfully' });
     } catch (error) {
       console.error('Error sending email:', error);
@@ -398,27 +398,24 @@ app.get('/calculate-expected-check', (req, res) => {
 
 // Endpoint to save appointment
 app.post("/save-appointment", (req, res) => {
-    const { userId, date, time, reasons } = req.body;
+    const { userId, username, date, time, reasons } = req.body;
 
-    if (!userId || !date || !time) {
-        return res.status(400).json({ error: "User ID, date, and time are required." });
+    if (!userId || !username || !date || !time) {
+        return res.status(400).json({ error: "User ID, username, date, and time are required." });
     }
 
-    // Convert date to 'YYYY-MM-DD' format
     const appointmentDate = new Date(date);
-    
+
     if (isNaN(appointmentDate.getTime())) {
         return res.status(400).json({ error: "Invalid date format." });
     }
 
-    const formattedDate = appointmentDate.toISOString().split('T')[0];  // Get 'YYYY-MM-DD'
-
-    // If reasons are provided, join them into a single string (or JSON array)
-    const reasonsStr = reasons ? reasons.join(', ') : '';  // Convert array of reasons into a string
+    const formattedDate = appointmentDate.toISOString().split('T')[0];
+    const reasonsStr = reasons ? reasons.join(', ') : '';
 
     db.query(
-        "INSERT INTO appointments (user_id, date, time, reasons) VALUES (?, ?, ?, ?)",
-        [userId, formattedDate, time, reasonsStr],  // Insert formatted date and reason string
+        "INSERT INTO appointments (user_id, username, date, time, reasons) VALUES (?, ?, ?, ?, ?)",
+        [userId, username, formattedDate, time, reasonsStr],
         (err, results) => {
             if (err) {
                 console.error("Error inserting appointment:", err);
@@ -431,7 +428,48 @@ app.post("/save-appointment", (req, res) => {
 });
 
 
+// Endpoint to fetch appointments
+app.get("/get-appointments", (req, res) => {
+    db.query('SELECT * FROM appointments', (err, results) => {
+        if (err) {
+            console.error('Error fetching appointments:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.status(200).json(results);
+    });
+});
 
+app.delete("/delete-appointments/:id", (req, res) => {
+    const { id } = req.params;
+    db.query('DELETE FROM appointments WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            console.error('Error deleting appointment:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+        res.status(200).json({ success: true });
+    });
+});
+
+// Endpoint to fetch user-specific appointments
+app.get("/get-appointments-clients", (req, res) => {
+    const { userId } = req.query;
+
+    if (!userId) {
+        return res.status(400).json({ error: 'User ID is required' });
+    }
+
+    db.query(
+        'SELECT * FROM appointments WHERE user_id = ? ORDER BY date ASC',
+        [userId], 
+        (err, results) => {
+            if (err) {
+                console.error('Error fetching appointments:', err);
+                return res.status(500).json({ error: 'Database error' });
+            }
+            res.status(200).json(results);
+        }
+    );
+});
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
